@@ -1,126 +1,316 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>William Dounla</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b0b;
-      color: #f5f5f0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #080808;
+      color: #f5f5f0;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 30px 8%;
+      background:
+        radial-gradient(circle at top right, rgba(200,169,81,0.18), transparent 35%),
+        linear-gradient(135deg, #080808, #0f172a);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #c8a951;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      border: 1px solid rgba(200,169,81,0.5);
+      padding: 10px 16px;
+      border-radius: 12px;
+    }
+
+    nav span {
+      color: #c8a951;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      max-width: 850px;
+      padding: 90px 0;
+    }
+
+    .tag {
+      color: #c8a951;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 25px;
     }
 
     h1 {
-      font-size: 48px;
-      color: #C8A951;
-      margin-bottom: 20px;
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 1.05;
+      margin-bottom: 30px;
     }
 
-    h2 {
-      color: #C8A951;
+    h1 span {
+      color: #c8a951;
     }
 
-    p {
-      color: #ccc;
-      line-height: 1.6;
+    .hero p {
+      font-size: 20px;
+      color: #d7d7d0;
+      max-width: 720px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 20px;
-      background: #C8A951;
-      color: black;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.3s;
     }
 
-    .section {
-      margin-top: 60px;
+    .btn-gold {
+      background: #c8a951;
+      color: #080808;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(245,245,240,0.3);
+      color: #f5f5f0;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      color: #c8a951;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 25px;
+    }
+
+    .intro {
+      max-width: 780px;
+      color: #cfcfc8;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
     }
 
     .card {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 28px;
+      border-radius: 24px;
+    }
+
+    .card h3 {
+      color: #c8a951;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #cfcfc8;
+    }
+
+    .dark-section {
+      background: #0b0b0b;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quote {
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 4vw, 46px);
+      color: #f5f5f0;
+      max-width: 950px;
+      line-height: 1.3;
+      margin-top: 40px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(200,169,81,0.14), rgba(255,255,255,0.03));
+      border: 1px solid rgba(200,169,81,0.3);
+      border-radius: 28px;
+      padding: 40px;
+      max-width: 850px;
     }
 
     footer {
-      margin-top: 60px;
+      padding: 30px 8%;
+      color: #888;
+      border-top: 1px solid rgba(255,255,255,0.08);
       text-align: center;
-      color: #777;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+  <nav>
+    <div class="logo">WD</div>
+    <span>William Dounla</span>
+  </nav>
 
-  <h1>William Dounla</h1>
-
-  <p>
-    Construire une vie alignée, avec profondeur et vérité.
-  </p>
-
-  <a class="btn" href="https://wa.me/237699545260">Me contacter sur WhatsApp</a>
-
-  <div class="section">
-    <h2>À propos</h2>
+  <div class="hero">
+    <div class="tag">Auteur · Stratège · Bâtisseur</div>
+    <h1>Construire une vie <span>alignée</span>, avec profondeur et vérité.</h1>
     <p>
       J’aide les personnes, les leaders et les organisations à mieux se connaître,
-      clarifier leur vision et bâtir une trajectoire cohérente et utile.
+      clarifier leur vision et bâtir une trajectoire utile, responsable et durable.
     </p>
+
+    <div class="buttons">
+      <a class="btn btn-gold" href="#contact">Me contacter</a>
+      <a class="btn btn-outline" href="#methode">Découvrir la méthode</a>
+    </div>
   </div>
+</header>
 
-  <div class="section">
-    <h2>La méthode</h2>
+<section id="methode">
+  <div class="section-title">La méthode</div>
+  <h2>La Méthode Dounla</h2>
 
+  <p class="intro">
+    Une démarche simple et profonde : partir de l’identité, clarifier la direction,
+    construire la discipline, puis servir avec impact.
+  </p>
+
+  <div class="grid">
     <div class="card">
-      <strong>1. Se découvrir</strong>
-      <p>Identifier ses valeurs, ses forces et sa véritable identité.</p>
+      <h3>01. Se découvrir</h3>
+      <p>Identifier ce que l’on porte réellement.</p>
     </div>
 
     <div class="card">
-      <strong>2. Clarifier sa vision</strong>
-      <p>Donner une direction claire et alignée à sa vie.</p>
+      <h3>02. Clarifier sa vision</h3>
+      <p>Donner une direction claire et cohérente.</p>
     </div>
 
     <div class="card">
-      <strong>3. Passer à l’action</strong>
-      <p>Transformer les idées en résultats concrets.</p>
+      <h3>03. Tracer sa route</h3>
+      <p>Transformer les idées en décisions concrètes.</p>
     </div>
 
     <div class="card">
-      <strong>4. Bâtir avec impact</strong>
-      <p>Créer une trajectoire durable et utile.</p>
+      <h3>04. Bâtir avec impact</h3>
+      <p>Construire une trajectoire utile et durable.</p>
     </div>
-
   </div>
+</section>
 
-  <div class="section">
-    <h2>Le livre</h2>
-    <p>
-      "Découvre-toi et trace ta route" — un guide pratique pour libérer ton potentiel.
-    </p>
+<section class="dark-section">
+  <div class="section-title">Approche</div>
+  <h2>Une manière différente de construire.</h2>
+
+  <p class="intro">
+    Beaucoup avancent sans vraiment se connaître, prennent des décisions sans clarté
+    et construisent des trajectoires qui ne leur ressemblent pas.
+  </p>
+
+  <p class="intro">
+    Mon approche consiste à revenir à l’essentiel : comprendre qui l’on est,
+    clarifier ce que l’on porte, puis bâtir avec cohérence, responsabilité
+    et profondeur.
+  </p>
+
+  <div class="quote">
+    “Une vie solide ne se construit pas dans le bruit,
+    mais dans l’alignement.”
   </div>
+</section>
 
-  <footer>
-    © 2026 William Dounla — Bâtir avec profondeur
-  </footer>
+<section>
+  <div class="section-title">Offres</div>
+  <h2>Comment je peux vous accompagner</h2>
 
-</div>
+  <div class="grid">
+    <div class="card">
+      <h3>Livres</h3>
+      <p>Des ressources pour clarifier sa trajectoire.</p>
+    </div>
+
+    <div class="card">
+      <h3>Programme</h3>
+      <p>Un accompagnement structuré vers la clarté.</p>
+    </div>
+
+    <div class="card">
+      <h3>Conférences</h3>
+      <p>Des interventions profondes et pratiques.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-box">
+    <div class="section-title">Contact</div>
+    <h2>Construisons quelque chose de profond.</h2>
+
+    <a class="btn btn-gold" href="mailto:contact@williamdounla.com">
+      Envoyer un message
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 William Dounla
+</footer>
 
 </body>
 </html>
