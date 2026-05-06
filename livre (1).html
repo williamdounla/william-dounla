@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Livre — William Dounla</title>
+  <meta name="description" content="Découvre-toi et Trace ta Route — Commande le livre de William Dounla sur Amazon, YouScribe ou en vente directe." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 60vh; display: flex; align-items: flex-end;
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 30%, rgba(200,169,81,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse 40% 50% at 10% 70%, rgba(28,28,46,0.8) 0%, transparent 60%);
+    }
+    .page-hero-lines {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(200,169,81,0.03) 1px, transparent 1px);
+      background-size: 100% 60px;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-breadcrumb {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gris); margin-bottom: 1.5rem;
+    }
+    .page-breadcrumb a { color: var(--or); text-decoration: none; }
+    .page-breadcrumb a::after { content: ' /'; color: var(--gris); }
+
+    /* ── BOOK SECTION ── */
+    .book-section { padding: 80px 0; }
+    .book-layout {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 6rem; align-items: start;
+    }
+    .book-cover-large {
+      position: sticky; top: calc(var(--nav-h) + 2rem);
+    }
+    .book-3d {
+      width: 100%; max-width: 340px; margin: 0 auto;
+      perspective: 1000px;
+    }
+    .book-3d-inner {
+      width: 100%; aspect-ratio: 0.7;
+      background: linear-gradient(145deg, var(--nuit-3), #1a1a2e);
+      border: 1px solid rgba(200,169,81,0.35);
+      border-radius: 4px 14px 14px 4px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 3rem 2rem;
+      box-shadow: -10px 0 0 rgba(0,0,0,0.7), 0 30px 80px rgba(200,169,81,0.2), 20px 20px 60px rgba(0,0,0,0.5);
+      position: relative; overflow: hidden;
+      transform: rotateY(-8deg);
+      transition: transform 0.5s;
+    }
+    .book-3d:hover .book-3d-inner { transform: rotateY(0deg); }
+    .book-3d-inner::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 8px;
+      background: linear-gradient(180deg, var(--or) 0%, #8B6914 100%);
+    }
+    .book-3d-inner::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(200,169,81,0.1) 0%, transparent 60%);
+    }
+    .book-3d-content { position: relative; z-index: 1; text-align: center; }
+    .book-3d-emoji { font-size: 4rem; margin-bottom: 1.5rem; }
+    .book-3d-author { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; }
+    .book-3d-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--blanc); line-height: 1.2; margin-bottom: 1rem; }
+    .book-3d-sub { font-size: 0.72rem; color: var(--gris); font-style: italic; line-height: 1.6; }
+    .book-badges {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .badge {
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border: 1px solid rgba(200,169,81,0.3); color: var(--or);
+      padding: 4px 12px; border-radius: 2px;
+    }
+
+    /* ── Book Details ── */
+    .book-price-block {
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.2);
+      padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;
+    }
+    .price-main { font-family: var(--font-display); font-size: 2.8rem; color: var(--or); font-weight: 300; }
+    .price-label { font-size: 0.8rem; color: var(--gris); margin-bottom: 1rem; }
+    .order-options { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    .order-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; border-radius: var(--radius);
+      text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.3s; border: 1px solid;
+    }
+    .order-btn-whatsapp {
+      background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.3);
+      color: #25D366;
+    }
+    .order-btn-whatsapp:hover { background: rgba(37,211,102,0.2); transform: translateX(4px); }
+    .order-btn-amazon {
+      background: rgba(255,153,0,0.1); border-color: rgba(255,153,0,0.3);
+      color: #FF9900;
+    }
+    .order-btn-amazon:hover { background: rgba(255,153,0,0.2); transform: translateX(4px); }
+    .order-btn-youscribe {
+      background: rgba(200,169,81,0.1); border-color: rgba(200,169,81,0.3);
+      color: var(--or);
+    }
+    .order-btn-youscribe:hover { background: var(--or-dim); transform: translateX(4px); }
+    .order-btn-icon { font-size: 1.1rem; }
+    .order-btn-arrow { font-size: 0.8rem; opacity: 0.6; }
+
+    /* ── Chapters ── */
+    .chapters-section { background: var(--nuit-2); padding: 80px 0; }
+    .chapters-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .chapter-card {
+      background: var(--nuit); border: 1px solid rgba(200,169,81,0.1);
+      padding: 2rem; border-radius: var(--radius);
+      transition: all var(--transition); position: relative;
+    }
+    .chapter-card:hover { border-color: rgba(200,169,81,0.3); transform: translateY(-3px); }
+    .chapter-num {
+      font-family: var(--font-display); font-size: 3rem;
+      color: rgba(200,169,81,0.15); font-weight: 300;
+      position: absolute; top: 1rem; right: 1.5rem;
+    }
+    .chapter-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .chapter-title { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .chapter-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.7; }
+
+    /* ── Extract ── */
+    .extract-section { padding: 80px 0; }
+    .extract-block {
+      max-width: 720px; margin: 3rem auto 0;
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.15);
+      border-left: 4px solid var(--or);
+      padding: 3rem; border-radius: 0 var(--radius) var(--radius) 0;
+      position: relative;
+    }
+    .extract-block::before {
+      content: '"'; position: absolute; top: -1rem; left: 2rem;
+      font-family: var(--font-display); font-size: 8rem; color: rgba(200,169,81,0.08);
+      line-height: 1;
+    }
+    .extract-text {
+      font-family: var(--font-display); font-size: 1.15rem;
+      font-style: italic; color: var(--blanc); line-height: 1.85;
+      position: relative; z-index: 1;
+    }
+    .extract-source { margin-top: 1.5rem; font-size: 0.8rem; color: var(--or); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .book-layout { grid-template-columns: 1fr; }
+      .book-cover-large { position: static; }
+      .book-3d { max-width: 260px; }
+      .chapters-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .chapters-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor">
+  <div class="cursor-dot" style="position:fixed"></div>
+  <div class="cursor-ring" style="position:fixed"></div>
+</div>
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a id="mob-accueil" href="index.html">Accueil</a>
+  <a id="mob-livre" href="livre.html">Le Livre</a>
+  <a id="mob-apropos" href="apropos.html">À propos</a>
+  <a id="mob-contact" href="contact.html">Contact</a>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+  <ul class="nav-links">
+    <li><a id="nav-accueil" href="index.html">Accueil</a></li>
+    <li><a id="nav-livre" href="livre.html" class="active">Le Livre</a></li>
+    <li><a id="nav-apropos" href="apropos.html">À propos</a></li>
+    <li><a id="nav-contact" href="contact.html">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="nav-lang">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a id="nav-cta" class="nav-cta" href="livre.html">Commander</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-lines"></div>
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="index.html">William Dounla</a> <span id="page-title-label">Le Livre</span>
+    </div>
+    <div class="tag" id="livre-tag">Premier ouvrage</div>
+    <h1 class="display-title" style="max-width:700px;" id="livre-hero-title">
+      Découvre-toi et<br><em>Trace ta Route</em>
+    </h1>
+    <p style="color:var(--gris);font-size:1rem;margin-top:1rem;max-width:520px;" id="livre-hero-sub">
+      Un guide pour libérer ton potentiel et bâtir ton avenir — le premier livre de développement personnel ancré dans la réalité africaine.
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BOOK MAIN SECTION -->
+<section class="book-section">
+  <div class="container">
+    <div class="book-layout">
+
+      <!-- Cover -->
+      <div class="book-cover-large reveal">
+        <div class="book-3d">
+          <img src="couverture.png" alt="Découvre-toi et Trace ta Route — William Dounla"
+            style="width:100%;border-radius:4px 12px 12px 4px;box-shadow:-10px 0 0 rgba(0,0,0,0.7), 10px 30px 80px rgba(200,169,81,0.25);transition:transform 0.5s;transform:rotateY(-5deg);"
+            onmouseover="this.style.transform='rotateY(0deg)'" onmouseout="this.style.transform='rotateY(-5deg)'" />
+        </div>
+        <div class="book-badges" style="margin-top:1.5rem;">
+          <span class="badge">Amazon</span>
+          <span class="badge">YouScribe</span>
+          <span class="badge">WhatsApp Direct</span>
+        </div>
+        <!-- Flyer -->
+        <div style="margin-top:2rem;border:1px solid rgba(200,169,81,0.15);border-radius:4px;overflow:hidden;">
+          <img src="flyer-livre.png" alt="Flyer Découvre-toi et Trace ta Route" style="width:100%;display:block;" />
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div>
+        <div class="reveal">
+          <div class="tag" id="desc-tag">À propos du livre</div>
+          <h2 class="section-title" id="desc-title">Le premier guide africain<br><em>de découverte de soi</em></h2>
+          <div class="or-line"></div>
+          <p style="color:var(--gris);line-height:1.9;margin-bottom:1rem;" id="desc-p1">
+            Ce livre n'est pas un livre de motivation générique. C'est un guide pratique, 
+            écrit depuis le terrain africain, pour t'aider à répondre aux questions fondamentales 
+            que personne autour de toi n'a su te poser.
+          </p>
+          <p style="color:var(--gris);line-height:1.9;margin-bottom:2rem;" id="desc-p2">
+            Qui es-tu vraiment ? Quelle est ta mission ? Comment construire un avenir qui te ressemble 
+            malgré les pressions familiales, sociales et économiques du contexte africain ?
+          </p>
+        </div>
+
+        <!-- Price & Order -->
+        <div class="book-price-block reveal reveal-delay-1">
+          <div class="price-label" id="price-label">Prix livre papier (vente directe)</div>
+          <div class="price-main">5 000 FCFA</div>
+          <div style="font-size:0.78rem;color:var(--gris);margin-top:4px;" id="price-note">Livraison disponible · Dédicace possible</div>
+          <div class="order-options">
+            <a class="order-btn order-btn-whatsapp" href="https://wa.me/237699545260?text=Bonjour William, je souhaite commander le livre." target="_blank">
+              <span><span class="order-btn-icon">📱</span> &nbsp; <span id="order-wa">Commander via WhatsApp</span></span>
+              <span class="order-btn-arrow">→</span>
+            </a>
+            <a class="order-btn order-btn-amazon" href="https://www.amazon.com/dp/B0GX3B4TTM" target="_blank">
+              <span><span class="order-btn-icon">📦</span> &nbsp; <span id="order-amazon">Acheter sur Amazon</span></span>
+              <span class="order-btn-arrow">→</span>
+            </a>
+            <a class="order-btn order-btn-youscribe" href="#" target="_blank">
+              <span><span class="order-btn-icon">📱</span> &nbsp; <span id="order-youscribe">Lire sur YouScribe (eBook)</span></span>
+              <span class="order-btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- What you get -->
+        <div class="reveal reveal-delay-2">
+          <h3 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:1.2rem;" id="get-title">Ce que tu vas obtenir</h3>
+          <div style="display:flex;flex-direction:column;gap:0.8rem;">
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="color:var(--or);font-size:1.2rem;flex-shrink:0;">✓</span>
+              <span style="color:var(--gris);font-size:0.9rem;" id="get-1">Une méthode en 4 étapes pour te découvrir profondément</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="color:var(--or);font-size:1.2rem;flex-shrink:0;">✓</span>
+              <span style="color:var(--gris);font-size:0.9rem;" id="get-2">Des exercices pratiques adaptés au contexte africain</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="color:var(--or);font-size:1.2rem;flex-shrink:0;">✓</span>
+              <span style="color:var(--gris);font-size:0.9rem;" id="get-3">Des outils pour clarifier ta vision et tes objectifs de vie</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="color:var(--or);font-size:1.2rem;flex-shrink:0;">✓</span>
+              <span style="color:var(--gris);font-size:0.9rem;" id="get-4">Un plan d'action concret pour passer à l'action immédiatement</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <span style="color:var(--or);font-size:1.2rem;flex-shrink:0;">✓</span>
+              <span style="color:var(--gris);font-size:0.9rem;" id="get-5">Un langage qui te ressemble — africain, direct, authentique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CHAPTERS -->
+<section class="chapters-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="chap-tag">Contenu du livre</div>
+      <h2 class="section-title" id="chap-title">Les grands thèmes<br><em>explorés</em></h2>
+    </div>
+    <div class="chapters-grid">
+      <div class="chapter-card reveal reveal-delay-1">
+        <div class="chapter-num">01</div>
+        <div class="chapter-icon">🔍</div>
+        <h3 class="chapter-title" id="chap1-t">Qui es-tu vraiment ?</h3>
+        <p class="chapter-desc" id="chap1-d">Explorer son identité profonde au-delà des rôles sociaux — fils, étudiant, employé — pour découvrir ce qui constitue sa véritable essence.</p>
+      </div>
+      <div class="chapter-card reveal reveal-delay-2">
+        <div class="chapter-num">02</div>
+        <div class="chapter-icon">💎</div>
+        <h3 class="chapter-title" id="chap2-t">Tes valeurs fondamentales</h3>
+        <p class="chapter-desc" id="chap2-d">Identifier ce qui compte vraiment pour toi — pas ce que la société ou ta famille valorise, mais tes propres principes de vie.</p>
+      </div>
+      <div class="chapter-card reveal reveal-delay-3">
+        <div class="chapter-num">03</div>
+        <div class="chapter-icon">🎯</div>
+        <h3 class="chapter-title" id="chap3-t">Trouver ta mission de vie</h3>
+        <p class="chapter-desc" id="chap3-d">Comprendre pourquoi tu es sur terre et quelle contribution unique tu peux apporter à ton entourage et à ton continent.</p>
+      </div>
+      <div class="chapter-card reveal reveal-delay-1">
+        <div class="chapter-num">04</div>
+        <div class="chapter-icon">🗺️</div>
+        <h3 class="chapter-title" id="chap4-t">Construire ta vision</h3>
+        <p class="chapter-desc" id="chap4-d">Définir une image claire de ton futur idéal — ambitieuse, concrète et alignée avec qui tu es profondément.</p>
+      </div>
+      <div class="chapter-card reveal reveal-delay-2">
+        <div class="chapter-num">05</div>
+        <div class="chapter-icon">💪</div>
+        <h3 class="chapter-title" id="chap5-t">Passer à l'action</h3>
+        <p class="chapter-desc" id="chap5-d">Vaincre la procrastination, la peur et les obstacles pour transformer ta vision en réalité concrète — étape par étape.</p>
+      </div>
+      <div class="chapter-card reveal reveal-delay-3">
+        <div class="chapter-num">06</div>
+        <div class="chapter-icon">🌍</div>
+        <h3 class="chapter-title" id="chap6-t">Réussir depuis l'Afrique</h3>
+        <p class="chapter-desc" id="chap6-d">Naviguer les défis spécifiques du contexte africain — pression familiale, manque de ressources, absence de modèles — et les transformer en forces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXTRACT -->
+<section class="extract-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="extract-tag">Extrait</div>
+      <h2 class="section-title" id="extract-title">Un avant-goût<br><em>du livre</em></h2>
+    </div>
+    <div class="extract-block reveal reveal-delay-2">
+      <p class="extract-text" id="extract-text">
+        "La plupart des gens vivent la vie que les autres ont conçue pour eux. 
+        Ils choisissent leurs études parce que leurs parents le voulaient. 
+        Ils choisissent leur métier parce que c'est ce qui paye. 
+        Ils choisissent leurs amis parce que c'est ce qui est attendu. 
+        Et un jour, ils se retournent et se demandent : mais où suis-je, moi, dans tout ça ?
+        Ce livre est là pour que tu ne te poses jamais cette question trop tard."
+      </p>
+      <div class="extract-source" id="extract-source">— William Dounla, Découvre-toi et Trace ta Route, Chapitre 1</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+        <p id="footer-tagline">Auteur · Compositeur · Stratège humain · Homme de conviction</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-nav-title">Navigation</h4>
+        <a id="footer-link-accueil" href="index.html">Accueil</a>
+        <a id="footer-link-livre" href="livre.html">Le Livre</a>
+        <a id="footer-link-apropos" href="apropos.html">À propos</a>
+        <a id="footer-link-contact" href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-social-title">Réseaux</h4>
+        <a href="https://wa.me/237699545260" target="_blank">WhatsApp</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="https://www.linkedin.com/in/william-dounla-b7b93088/" target="_blank">LinkedIn</a>
+        <a href="https://suno.com/@williamdounla" target="_blank">WD Harmony</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-rights">© 2026 William Dounla. Tous droits réservés.</p>
+      <p id="footer-made">Fait avec conviction depuis Yaoundé, Cameroun</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+const livreTranslations = {
+  fr: {
+    pageTitle: "Le Livre", livreTag: "Premier ouvrage",
+    heroTitle: "Découvre-toi et<br><em>Trace ta Route</em>",
+    heroSub: "Un guide pour libérer ton potentiel et bâtir ton avenir — le premier livre de développement personnel ancré dans la réalité africaine.",
+    descTag: "À propos du livre", descTitle: "Le premier guide africain<br><em>de découverte de soi</em>",
+    p1: "Ce livre n'est pas un livre de motivation générique. C'est un guide pratique, écrit depuis le terrain africain, pour t'aider à répondre aux questions fondamentales que personne autour de toi n'a su te poser.",
+    p2: "Qui es-tu vraiment ? Quelle est ta mission ? Comment construire un avenir qui te ressemble malgré les pressions familiales, sociales et économiques du contexte africain ?",
+    priceLabel: "Prix livre papier (vente directe)", priceNote: "Livraison disponible · Dédicace possible",
+    orderWa: "Commander via WhatsApp", orderAmazon: "Acheter sur Amazon", orderYouscribe: "Lire sur YouScribe (eBook)",
+    getTitle: "Ce que tu vas obtenir",
+    get1: "Une méthode en 4 étapes pour te découvrir profondément",
+    get2: "Des exercices pratiques adaptés au contexte africain",
+    get3: "Des outils pour clarifier ta vision et tes objectifs de vie",
+    get4: "Un plan d'action concret pour passer à l'action immédiatement",
+    get5: "Un langage qui te ressemble — africain, direct, authentique",
+    chapTag: "Contenu du livre", chapTitle: "Les grands thèmes<br><em>explorés</em>",
+    c1t:"Qui es-tu vraiment ?", c1d:"Explorer son identité profonde au-delà des rôles sociaux — fils, étudiant, employé — pour découvrir ce qui constitue sa véritable essence.",
+    c2t:"Tes valeurs fondamentales", c2d:"Identifier ce qui compte vraiment pour toi — pas ce que la société ou ta famille valorise, mais tes propres principes de vie.",
+    c3t:"Trouver ta mission de vie", c3d:"Comprendre pourquoi tu es sur terre et quelle contribution unique tu peux apporter à ton entourage et à ton continent.",
+    c4t:"Construire ta vision", c4d:"Définir une image claire de ton futur idéal — ambitieuse, concrète et alignée avec qui tu es profondément.",
+    c5t:"Passer à l'action", c5d:"Vaincre la procrastination, la peur et les obstacles pour transformer ta vision en réalité concrète.",
+    c6t:"Réussir depuis l'Afrique", c6d:"Naviguer les défis spécifiques du contexte africain et les transformer en forces.",
+    extractTag: "Extrait", extractTitle: "Un avant-goût<br><em>du livre</em>",
+    extractText: '"La plupart des gens vivent la vie que les autres ont conçue pour eux. Ils choisissent leurs études parce que leurs parents le voulaient. Ils choisissent leur métier parce que c\'est ce qui paye. Et un jour, ils se retournent et se demandent : mais où suis-je, moi, dans tout ça ? Ce livre est là pour que tu ne te poses jamais cette question trop tard."',
+    extractSource: "— William Dounla, Découvre-toi et Trace ta Route, Chapitre 1",
+  },
+  en: {
+    pageTitle: "The Book", livreTag: "First work",
+    heroTitle: "Discover Yourself and<br><em>Trace Your Path</em>",
+    heroSub: "A guide to unleash your potential and build your future — the first personal development book rooted in African reality.",
+    descTag: "About the book", descTitle: "The first African guide<br><em>to self-discovery</em>",
+    p1: "This is not a generic motivation book. It's a practical guide, written from the African ground, to help you answer the fundamental questions no one around you has known how to ask.",
+    p2: "Who are you really? What is your mission? How do you build a future that reflects you despite the family, social and economic pressures of the African context?",
+    priceLabel: "Paperback price (direct sale)", priceNote: "Delivery available · Dedication possible",
+    orderWa: "Order via WhatsApp", orderAmazon: "Buy on Amazon", orderYouscribe: "Read on YouScribe (eBook)",
+    getTitle: "What you will get",
+    get1: "A 4-step method to discover yourself deeply",
+    get2: "Practical exercises adapted to the African context",
+    get3: "Tools to clarify your vision and life goals",
+    get4: "A concrete action plan to get started immediately",
+    get5: "A language that resonates with you — African, direct, authentic",
+    chapTag: "Book content", chapTitle: "The main themes<br><em>explored</em>",
+    c1t:"Who are you really?", c1d:"Exploring your deep identity beyond social roles — son, student, employee — to discover what makes your true essence.",
+    c2t:"Your core values", c2d:"Identifying what truly matters to you — not what society or your family values, but your own life principles.",
+    c3t:"Finding your life mission", c3d:"Understanding why you are here and what unique contribution you can bring to those around you and your continent.",
+    c4t:"Building your vision", c4d:"Defining a clear image of your ideal future — ambitious, concrete and aligned with who you truly are.",
+    c5t:"Taking action", c5d:"Overcoming procrastination, fear and obstacles to transform your vision into concrete reality.",
+    c6t:"Succeeding from Africa", c6d:"Navigate the specific challenges of the African context and turn them into strengths.",
+    extractTag: "Extract", extractTitle: "A taste<br><em>of the book</em>",
+    extractText: '"Most people live the life others have designed for them. They choose their studies because their parents wanted it. They choose their job because it pays. And one day, they turn around and ask: but where am I in all of this? This book is here so you never ask that question too late."',
+    extractSource: "— William Dounla, Discover Yourself and Trace Your Path, Chapter 1",
+  }
+};
+function updatePageLang(lang) {
+  const t = livreTranslations[lang];
+  const set = (id, val, html=false) => { const el = document.getElementById(id); if(el){if(html)el.innerHTML=val;else el.textContent=val;} };
+  set('page-title-label', t.pageTitle);
+  set('livre-tag', t.livreTag);
+  set('livre-hero-title', t.heroTitle, true); set('livre-hero-sub', t.heroSub);
+  set('desc-tag', t.descTag); set('desc-title', t.descTitle, true);
+  set('desc-p1', t.p1); set('desc-p2', t.p2);
+  set('price-label', t.priceLabel); set('price-note', t.priceNote);
+  set('order-wa', t.orderWa); set('order-amazon', t.orderAmazon); set('order-youscribe', t.orderYouscribe);
+  set('get-title', t.getTitle);
+  set('get-1', t.get1); set('get-2', t.get2); set('get-3', t.get3); set('get-4', t.get4); set('get-5', t.get5);
+  set('chap-tag', t.chapTag); set('chap-title', t.chapTitle, true);
+  set('chap1-t',t.c1t);set('chap1-d',t.c1d);set('chap2-t',t.c2t);set('chap2-d',t.c2d);
+  set('chap3-t',t.c3t);set('chap3-d',t.c3d);set('chap4-t',t.c4t);set('chap4-d',t.c4d);
+  set('chap5-t',t.c5t);set('chap5-d',t.c5d);set('chap6-t',t.c6t);set('chap6-d',t.c6d);
+  set('extract-tag',t.extractTag);set('extract-title',t.extractTitle,true);
+  set('extract-text',t.extractText);set('extract-source',t.extractSource);
+}
+</script>
+</body>
+</html>
