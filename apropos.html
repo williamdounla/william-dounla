@@ -4,133 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>À propos — William Dounla</title>
-  <meta name="description" content="Découvrez l'histoire de William Dounla, auteur africain de développement personnel, conférencier et guide de vie." />
+  <meta name="description" content="William Dounla — Économiste, DAF, formateur en leadership, diacre, auteur et compositeur. Découvrez l'homme complet derrière l'œuvre." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .page-hero {
-      min-height: 55vh; display: flex; align-items: flex-end;
-      padding: calc(var(--nav-h) + 60px) 0 80px;
-      position: relative; overflow: hidden;
+      min-height:55vh; display:flex; align-items:flex-end;
+      padding:calc(var(--nav-h) + 60px) 0 80px;
+      position:relative; overflow:hidden;
     }
     .page-hero-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 100% 20%, rgba(200,169,81,0.07) 0%, transparent 60%);
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 60% 80% at 100% 20%, rgba(200,169,81,0.07) 0%, transparent 60%);
     }
 
     /* ── PORTRAIT SECTION ── */
-    .portrait-section { padding: 80px 0; }
+    .portrait-section { padding:100px 0; }
     .portrait-layout {
-      display: grid; grid-template-columns: 5fr 7fr;
-      gap: 5rem; align-items: start;
+      display:grid; grid-template-columns:5fr 7fr;
+      gap:5rem; align-items:start;
     }
-    .portrait-col { position: sticky; top: calc(var(--nav-h) + 2rem); }
+    .portrait-col { position:sticky; top:calc(var(--nav-h) + 2rem); }
     .portrait-main {
-      width: 100%; border-radius: var(--radius);
-      border: 1px solid rgba(200,169,81,0.2);
-      box-shadow: 20px 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(200,169,81,0.08);
-      display: block; object-fit: cover; object-position: top;
+      width:100%; display:block; border-radius:var(--radius);
+      border:1px solid rgba(200,169,81,0.2);
+      box-shadow:20px 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(200,169,81,0.06);
+      object-fit:cover; object-position:top;
     }
     .portrait-secondary {
-      width: 55%; margin-top: -60px; margin-left: auto;
-      border-radius: var(--radius);
-      border: 2px solid rgba(200,169,81,0.3);
-      box-shadow: 10px 10px 40px rgba(0,0,0,0.5);
-      display: block; object-fit: cover; object-position: top;
-      position: relative; z-index: 2;
+      width:55%; margin-top:-60px; margin-left:auto;
+      border-radius:var(--radius);
+      border:2px solid rgba(200,169,81,0.3);
+      box-shadow:10px 10px 40px rgba(0,0,0,0.5);
+      display:block; object-fit:cover; object-position:top;
+      position:relative; z-index:2;
     }
-    .portrait-label {
-      margin-top: 1.5rem; text-align: center;
+    .portrait-chantier {
+      width:100%; display:block; margin-top:1.5rem;
+      border-radius:var(--radius);
+      border:1px solid rgba(200,169,81,0.15);
+      object-fit:cover;
     }
-    .portrait-label .tag { margin-bottom: 0.3rem; }
-    .portrait-label p { font-size: 0.82rem; color: var(--gris); }
 
     /* ── STORY ── */
-    .story-text p { color: var(--gris); line-height: 1.95; margin-bottom: 1.2rem; font-size: 0.95rem; }
-    .story-text p strong { color: var(--blanc); font-weight: 500; }
+    .story-p { color:var(--gris); line-height:1.95; margin-bottom:1.2rem; font-size:0.92rem; }
 
-    .values-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin: 2.5rem 0;
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background:linear-gradient(135deg, var(--nuit-3), #1a1a2e);
+      border:1px solid rgba(200,169,81,0.2);
+      border-left:4px solid var(--or);
+      padding:2.5rem; border-radius:0 var(--radius) var(--radius) 0;
+      margin:2.5rem 0;
     }
-    .value-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.1);
-      padding: 1.2rem; border-radius: var(--radius);
-      transition: border-color var(--transition);
+    .highlight-box p {
+      font-family:var(--font-display); font-size:1.3rem;
+      font-style:italic; color:var(--or-light,#E2CC8A); line-height:1.6;
     }
-    .value-item:hover { border-color: rgba(200,169,81,0.3); }
-    .value-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .value-title { font-size: 0.82rem; font-weight: 600; color: var(--or); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
-    .value-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.6; }
+    .highlight-box .author { margin-top:0.8rem; font-size:0.82rem; color:var(--or); }
+
+    /* ── DIMENSIONS GRID ── */
+    .dimensions-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1rem; margin:2rem 0;
+    }
+    .dimension-item {
+      display:flex; gap:1rem; align-items:flex-start;
+      background:var(--nuit-3); border:1px solid rgba(200,169,81,0.08);
+      padding:1.2rem; border-radius:var(--radius);
+      transition:border-color 0.3s;
+    }
+    .dimension-item:hover { border-color:rgba(200,169,81,0.25); }
+    .dim-icon { font-size:1.3rem; flex-shrink:0; }
+    .dim-title { font-size:0.82rem; font-weight:600; color:var(--or); margin-bottom:3px; }
+    .dim-desc { font-size:0.78rem; color:var(--gris); line-height:1.6; }
+
+    /* ── FORMATION SECTION ── */
+    .formation-section { padding:80px 0; background:var(--nuit-2); }
+    .formation-grid {
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:1.5rem; margin-top:3rem;
+    }
+    .formation-card {
+      background:var(--nuit); border:1px solid rgba(200,169,81,0.1);
+      padding:2rem; border-radius:var(--radius);
+      transition:all var(--transition); position:relative;
+    }
+    .formation-card:hover { border-color:rgba(200,169,81,0.3); transform:translateY(-3px); }
+    .formation-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:var(--or); transform:scaleX(0); transform-origin:left;
+      transition:transform var(--transition);
+    }
+    .formation-card:hover::before { transform:scaleX(1); }
+    .formation-icon { font-size:2rem; margin-bottom:1rem; }
+    .formation-label { font-size:0.65rem; color:var(--or); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem; }
+    .formation-title { font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem; }
+    .formation-desc { font-size:0.82rem; color:var(--gris); line-height:1.7; }
+
+    /* ── MINISTERE SECTION ── */
+    .ministere-section { padding:80px 0; background:var(--nuit); }
+    .ministere-layout {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:3rem; margin-top:3rem;
+    }
+    .ministere-card {
+      background:var(--nuit-3); border:1px solid rgba(200,169,81,0.12);
+      padding:2rem; border-radius:var(--radius);
+      transition:all var(--transition);
+    }
+    .ministere-card:hover { border-color:rgba(200,169,81,0.3); transform:translateY(-3px); }
+    .ministere-icon { font-size:1.8rem; margin-bottom:1rem; }
+    .ministere-title { font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem; color:var(--or); }
+    .ministere-desc { font-size:0.85rem; color:var(--gris); line-height:1.8; }
 
     /* ── TIMELINE ── */
-    .timeline-section { background: var(--nuit-2); padding: 80px 0; }
-    .timeline { position: relative; max-width: 700px; margin: 3rem auto 0; }
+    .timeline-section { padding:80px 0; background:var(--nuit-2); }
+    .timeline { position:relative; max-width:700px; margin:3rem auto 0; }
     .timeline::before {
-      content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(180deg, var(--or), transparent);
+      content:''; position:absolute; left:20px; top:0; bottom:0; width:1px;
+      background:linear-gradient(180deg, var(--or), transparent);
     }
-    .timeline-item { display: flex; gap: 2rem; margin-bottom: 2.5rem; position: relative; }
+    .timeline-item { display:flex; gap:2rem; margin-bottom:2.5rem; }
     .timeline-dot {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--nuit-3); border: 2px solid var(--or);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 1rem;
-      box-shadow: 0 0 20px rgba(200,169,81,0.2);
+      width:40px; height:40px; border-radius:50%;
+      background:var(--nuit-3); border:2px solid var(--or);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; font-size:1rem;
     }
-    .timeline-content { padding-top: 6px; }
-    .timeline-year { font-size: 0.72rem; color: var(--or); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
-    .timeline-title { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .timeline-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.7; }
-
-    /* ── LOGO SECTION ── */
-    .logo-section { padding: 80px 0; text-align: center; }
-    .logo-display {
-      max-width: 700px; margin: 3rem auto;
-      border: 1px solid rgba(200,169,81,0.15);
-      border-radius: var(--radius); overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    .logo-display img { width: 100%; display: block; }
-
-    /* ── MISSION BOX ── */
-    .mission-box {
-      background: linear-gradient(135deg, var(--nuit-3), #1a1a2e);
-      border: 1px solid rgba(200,169,81,0.2);
-      border-left: 4px solid var(--or);
-      padding: 3rem; border-radius: 0 var(--radius) var(--radius) 0;
-      margin: 3rem 0;
-    }
-    .mission-box .tag { margin-bottom: 1rem; }
-    .mission-box p {
-      font-family: var(--font-display); font-size: 1.5rem;
-      font-style: italic; color: var(--blanc); line-height: 1.6;
-    }
-    .mission-box .author { margin-top: 1rem; font-size: 0.85rem; color: var(--or); }
+    .timeline-year { font-size:0.72rem; color:var(--or); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; }
+    .timeline-title { font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.4rem; }
+    .timeline-desc { font-size:0.83rem; color:var(--gris); line-height:1.7; }
 
     /* ── CTA ── */
-    .about-cta {
-      background: var(--nuit-2); padding: 80px 0; text-align: center;
-    }
+    .apropos-cta { padding:80px 0; text-align:center; background:var(--nuit); }
 
-    @media (max-width: 900px) {
-      .portrait-layout { grid-template-columns: 1fr; }
-      .portrait-col { position: static; }
-      .portrait-secondary { width: 45%; }
-      .values-grid { grid-template-columns: 1fr; }
+    @media(max-width:900px){
+      .portrait-layout{grid-template-columns:1fr;}
+      .portrait-col{position:static;}
+      .portrait-secondary{display:none;}
+      .dimensions-grid{grid-template-columns:1fr;}
+      .formation-grid{grid-template-columns:1fr;}
+      .ministere-layout{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-
-<div class="cursor">
-  <div class="cursor-dot" style="position:fixed"></div>
-  <div class="cursor-ring" style="position:fixed"></div>
-</div>
-<div class="mobile-menu">
-  <button class="mobile-close">✕</button>
+<div class="cursor"><div class="cursor-dot" style="position:fixed"></div><div class="cursor-ring" style="position:fixed"></div></div>
+<div class="mobile-menu"><button class="mobile-close">✕</button>
   <a id="mob-accueil" href="index.html">Accueil</a>
-  <a id="mob-livre" href="livre.html">Le Livre</a>
+  <a id="mob-livre" href="livre.html">Livres</a>
   <a id="mob-harmonie" href="harmonie.html">Harmonie</a>
   <a id="mob-apropos" href="apropos.html">À propos</a>
   <a id="mob-contact" href="contact.html">Contact</a>
@@ -139,16 +161,13 @@
   <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
   <ul class="nav-links">
     <li><a id="nav-accueil" href="index.html">Accueil</a></li>
-    <li><a id="nav-livre" href="livre.html">Le Livre</a></li>
+    <li><a id="nav-livre" href="livre.html">Livres</a></li>
     <li><a id="nav-harmonie" href="harmonie.html">Harmonie</a></li>
     <li><a id="nav-apropos" href="apropos.html" class="active">À propos</a></li>
     <li><a id="nav-contact" href="contact.html">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
-    <div class="nav-lang">
-      <button class="lang-btn" data-lang="fr">FR</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-    </div>
+    <div class="nav-lang"><button class="lang-btn" data-lang="fr">FR</button><button class="lang-btn" data-lang="en">EN</button></div>
     <a id="nav-cta" class="nav-cta" href="livre.html">Commander</a>
     <button class="hamburger"><span></span><span></span><span></span></button>
   </div>
@@ -157,72 +176,140 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
-  <div class="container">
+  <div class="container" style="position:relative;z-index:1;">
     <div class="page-breadcrumb"><a href="index.html">William Dounla</a> <span id="page-label">À propos</span></div>
-    <div class="tag" id="about-tag">L'auteur</div>
-    <h1 class="display-title" id="about-hero-title">William Dounla —<br><em>Stratège de transformation</em></h1>
-    <p style="color:var(--gris);margin-top:1rem;max-width:520px;" id="about-hero-sub">Auteur · Conférencier · Guide de vie · Bâtisseur de trajectoires</p>
+    <div class="tag" id="hero-tag">L'auteur</div>
+    <h1 class="display-title" id="hero-title">William Dounla —<br><em>Homme de conviction</em></h1>
+    <p style="color:var(--gris);margin-top:1rem;max-width:560px;" id="hero-sub">
+      Auteur · Économiste · DAF · Formateur en leadership · Diacre · Compositeur · Explorateur de l'IA
+    </p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- PORTRAIT + STORY -->
+<!-- PORTRAIT + BIOGRAPHIE -->
 <section class="portrait-section">
   <div class="container">
     <div class="portrait-layout">
 
       <!-- Photos -->
       <div class="portrait-col reveal">
-        <img class="portrait-main" src="william-hero.jpeg" alt="William Dounla — Portrait officiel" />
+        <img class="portrait-main" src="william-hero.jpeg" alt="William Dounla" />
         <img class="portrait-secondary" src="william-boubou.png" alt="William Dounla" />
-        <div class="portrait-label">
-          <div class="tag" id="portrait-tag">William Dounla</div>
-          <p id="portrait-sub">Auteur · Yaoundé, Cameroun</p>
+        <img class="portrait-chantier" src="william-chantier.jpg" alt="William Dounla — Président Comité Construction" />
+        <div style="margin-top:1rem;text-align:center;">
+          <div class="tag">Président Comité Construction · YIC</div>
         </div>
       </div>
 
-      <!-- Story -->
+      <!-- Biographie -->
       <div class="reveal reveal-delay-2">
-        <div class="tag" id="story-tag">Mon histoire</div>
-        <h2 class="section-title" id="story-title">L'homme derrière<br><em>le mouvement</em></h2>
+        <div class="tag" id="bio-tag">Biographie</div>
+        <h2 class="section-title" id="bio-title">À la croisée de la réflexion,<br><em>du leadership et de la foi</em></h2>
         <div class="or-line"></div>
-        <div class="story-text">
-          <p id="story-p1"><strong>William Dounla</strong> est un auteur camerounais qui a compris très tôt que le manque de connaissance de soi est l'un des plus grands obstacles à l'épanouissement des jeunes africains.</p>
-          <p id="story-p2">Pendant des années, il a observé autour de lui des jeunes brillants, doués, pleins d'énergie — mais perdus. Non pas par manque d'intelligence, mais par manque d'outils pour se connaître, se choisir et s'orienter.</p>
-          <p id="story-p3">C'est cette observation qui l'a poussé à écrire <strong>« Découvre-toi et Trace ta Route »</strong> — un guide pratique et authentique, ancré dans la réalité africaine, pour aider chacun à répondre aux questions essentielles de son existence.</p>
-          <p id="story-p4">Aujourd'hui, William est bien plus qu'un auteur. Il est un <strong>stratège de transformation</strong>, un conférencier qui intervient dans les universités et les entreprises, et un bâtisseur de trajectoires pour la jeunesse africaine.</p>
-        </div>
 
-        <div class="mission-box">
-          <div class="tag" id="mission-tag">Sa mission</div>
-          <p id="mission-text">"Je n'écris pas des livres. Je construis un mouvement pour que la jeunesse africaine se lève, se découvre et trace sa propre route — pas celle qu'on a tracée pour elle."</p>
+        <p class="story-p" id="bio-p1"><strong style="color:var(--blanc);">William Dounla</strong> est économiste de formation, titulaire d'un Master en Politiques et Négociation Commerciale (Université de Yaoundé II-Soa). Fort de plus de quinze années d'expérience à des postes de direction, il a exercé notamment comme Directeur Administratif et Financier au sein des Œuvres Médicales de la Mission du Plein Évangile au Cameroun.</p>
+
+        <p class="story-p" id="bio-p2">Formé au leadership au <strong style="color:var(--blanc);">Haggai Institute</strong> (États-Unis), il a développé une conviction que ses années de terrain n'ont fait que renforcer : les organisations chrétiennes ont besoin, autant que les entreprises, de gouvernance solide, de gestion transparente et de structures capables de traverser les générations.</p>
+
+        <p class="story-p" id="bio-p3">Parallèlement à ses responsabilités professionnelles, William Dounla s'est engagé dans la <strong style="color:var(--blanc);">formation de jeunes leaders et de managers africains</strong>, convaincu que chaque expérience — victoire ou épreuve — recèle une leçon décisive pour qui veut grandir. Entrepreneur, formateur et passionné d'agriculture, il incarne lui-même la figure du leader multidimensionnel qu'il appelle de ses vœux.</p>
+
+        <p class="story-p" id="bio-p4">Ce qui le distingue vraiment n'est pas seulement la finance ou l'administration. C'est sa capacité à <strong style="color:var(--blanc);">donner du sens</strong> — à relier la technologie et l'humain, la foi et la modernité, la réflexion et l'action, la stratégie et la sensibilité.</p>
+
+        <div class="highlight-box">
+          <p id="bio-quote">"Gérer avec rigueur ne diminue pas la foi. Cela l'honore. Une œuvre confiée par Dieu mérite une gestion digne de cette confiance."</p>
           <div class="author">— William Dounla</div>
         </div>
 
-        <div class="values-grid">
-          <div class="value-item">
-            <div class="value-icon">🔍</div>
-            <div><div class="value-title" id="v1t">Authenticité</div><div class="value-desc" id="v1d">Parler vrai, depuis le terrain africain, sans artifices importés.</div></div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">💡</div>
-            <div><div class="value-title" id="v2t">Praticité</div><div class="value-desc" id="v2d">Des outils concrets, actionnables dès la première lecture.</div></div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">🌍</div>
-            <div><div class="value-title" id="v3t">Ancrage africain</div><div class="value-desc" id="v3d">Un regard sur le développement personnel qui prend en compte nos réalités.</div></div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">🚀</div>
-            <div><div class="value-title" id="v4t">Impact durable</div><div class="value-desc" id="v4d">Transformer des vies pour plusieurs décennies, pas juste inspirer pour quelques heures.</div></div>
-          </div>
+        <!-- 6 dimensions -->
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:1.2rem;" id="dim-title">Ses 6 dimensions</h3>
+        <div class="dimensions-grid">
+          <div class="dimension-item"><div class="dim-icon">✍️</div><div><div class="dim-title" id="d1t">Auteur-Penseur</div><div class="dim-desc" id="d1d">5 livres — connaissance de soi, leadership, gouvernance d'église</div></div></div>
+          <div class="dimension-item"><div class="dim-icon">📐</div><div><div class="dim-title" id="d2t">Stratège humain</div><div class="dim-desc" id="d2d">DAF 15+ ans · Rigueur, redevabilité, intégrité institutionnelle</div></div></div>
+          <div class="dimension-item"><div class="dim-icon">✝️</div><div><div class="dim-title" id="d3t">Homme de conviction</div><div class="dim-desc" id="d3d">Servir Jésus-Christ sans compromis — foi publique et vécue</div></div></div>
+          <div class="dimension-item"><div class="dim-icon">🎵</div><div><div class="dim-title" id="d4t">Créateur artistique</div><div class="dim-desc" id="d4d">WD Harmony Records · Gospel, acoustique, afro-soul · Suno</div></div></div>
+          <div class="dimension-item"><div class="dim-icon">🤖</div><div><div class="dim-title" id="d5t">Explorateur de l'IA</div><div class="dim-desc" id="d5d">IA au service de l'humain — création, formation, gouvernance</div></div></div>
+          <div class="dimension-item"><div class="dim-icon">👨‍👩‍👧</div><div><div class="dim-title" id="d6t">Homme de famille</div><div class="dim-desc" id="d6d">Marié à Marlyse · Accompagnateur de couples · Transmission</div></div></div>
         </div>
 
-        <a class="btn btn-gold" href="contact.html" id="about-contact-btn">
+        <a class="btn btn-gold" href="contact.html" id="bio-cta">
           Me contacter
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FORMATION -->
+<section class="formation-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="form-tag">Formation & Expertise</div>
+      <h2 class="section-title" id="form-title">Un parcours<br><em>de rigueur et de conviction</em></h2>
+    </div>
+    <div class="formation-grid">
+      <div class="formation-card reveal reveal-delay-1">
+        <div class="formation-icon">🎓</div>
+        <div class="formation-label" id="f1-label">Formation académique</div>
+        <h3 class="formation-title" id="f1-title">Master en Politiques et Négociation Commerciale</h3>
+        <p class="formation-desc" id="f1-desc">Université de Yaoundé II-Soa · Cameroun. Fondation académique en économie, gestion et stratégie commerciale.</p>
+      </div>
+      <div class="formation-card reveal reveal-delay-2">
+        <div class="formation-icon">🌍</div>
+        <div class="formation-label" id="f2-label">Formation en leadership</div>
+        <h3 class="formation-title" id="f2-title">Haggai Institute</h3>
+        <p class="formation-desc" id="f2-desc">États-Unis · Référence internationale en leadership chrétien. Formation qui a consolidé sa vision : des leaders intègres pour des organisations durables.</p>
+      </div>
+      <div class="formation-card reveal reveal-delay-1">
+        <div class="formation-icon">🏥</div>
+        <div class="formation-label" id="f3-label">Poste principal</div>
+        <h3 class="formation-title" id="f3-title">Directeur Administratif et Financier</h3>
+        <p class="formation-desc" id="f3-desc">Œuvres Médicales de la Mission du Plein Évangile au Cameroun · 15+ années · Institution de santé à l'interface du service chrétien et de la rigueur institutionnelle.</p>
+      </div>
+      <div class="formation-card reveal reveal-delay-2">
+        <div class="formation-icon">🤖</div>
+        <div class="formation-label" id="f4-label">Expertise émergente</div>
+        <h3 class="formation-title" id="f4-title">Intelligence Artificielle appliquée</h3>
+        <p class="formation-desc" id="f4-desc">Création, formation, gouvernance, leadership. Vision claire : la technologie au service de l'humain. Prompts avancés, storytelling génératif, IA et administration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MINISTÈRE -->
+<section class="ministere-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="min-tag">Foi & Ministère</div>
+      <h2 class="section-title" id="min-title">Servir Jésus-Christ<br><em>sans compromis</em></h2>
+      <p class="lead" style="margin:0 auto;" id="min-sub">Au sein de la Yaoundé International Chapel, assemblée locale de la Mission du Plein Évangile Cameroun.</p>
+    </div>
+    <div class="ministere-layout">
+      <div class="ministere-card reveal reveal-delay-1">
+        <div class="ministere-icon">⛪</div>
+        <h3 class="ministere-title" id="m1-title">Diacre</h3>
+        <p class="ministere-desc" id="m1-desc">Engagement au service de l'Église locale. Une foi publique, vécue simplement, qui traverse tout ce qu'il fait — ses livres, ses conférences, ses décisions.</p>
+      </div>
+      <div class="ministere-card reveal reveal-delay-2">
+        <div class="ministere-icon">💰</div>
+        <h3 class="ministere-title" id="m2-title">Président du Comité des Finances</h3>
+        <p class="ministere-desc" id="m2-desc">Là où sa compétence de DAF rencontre son engagement d'homme de foi. La rigueur financière au service de la mission de Dieu.</p>
+      </div>
+      <div class="ministere-card reveal reveal-delay-1">
+        <div class="ministere-icon">🏗️</div>
+        <h3 class="ministere-title" id="m3-title">Président du Comité de Construction</h3>
+        <p class="ministere-desc" id="m3-desc">Superviser les projets de construction de l'église — terrain concret où il éprouve au quotidien les principes exposés dans ses livres.</p>
+      </div>
+      <div class="ministere-card reveal reveal-delay-2">
+        <div class="ministere-icon">💑</div>
+        <h3 class="ministere-title" id="m4-title">Accompagnateur de couples</h3>
+        <p class="ministere-desc" id="m4-desc">William et son épouse Marlyse accompagnent les fiancés — enseignement, conseil, préparation au mariage. Membres du comité de mariage de leur église.</p>
       </div>
     </div>
   </div>
@@ -234,48 +321,56 @@
 <section class="timeline-section">
   <div class="container">
     <div class="reveal" style="text-align:center;">
-      <div class="tag" id="timeline-tag">Parcours</div>
-      <h2 class="section-title" id="timeline-title">Les étapes<br><em>du mouvement</em></h2>
+      <div class="tag" id="tl-tag">Parcours</div>
+      <h2 class="section-title" id="tl-title">Les étapes<br><em>d'une vie bâtie avec conviction</em></h2>
     </div>
     <div class="timeline">
       <div class="timeline-item reveal">
-        <div class="timeline-dot">🌱</div>
-        <div class="timeline-content">
-          <div class="timeline-year" id="tl1-year">Les premières années</div>
-          <h3 class="timeline-title" id="tl1-title">L'observation et la prise de conscience</h3>
-          <p class="timeline-desc" id="tl1-desc">William observe autour de lui des jeunes brillants mais perdus. Il commence à développer une vision : donner aux jeunes africains les outils de connaissance de soi qui manquent cruellement.</p>
+        <div class="timeline-dot">🎓</div>
+        <div>
+          <div class="timeline-year" id="tl1-y">Formation</div>
+          <h3 class="timeline-title" id="tl1-t">Master & Haggai Institute</h3>
+          <p class="timeline-desc" id="tl1-d">Formation en économie à Yaoundé II-Soa, puis au Haggai Institute aux États-Unis. Les bases académiques et spirituelles qui fondent tout le reste.</p>
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot">✍️</div>
-        <div class="timeline-content">
-          <div class="timeline-year" id="tl2-year">L'écriture</div>
-          <h3 class="timeline-title" id="tl2-title">Naissance du premier livre</h3>
-          <p class="timeline-desc" id="tl2-desc">Après des mois de travail, William finalise « Découvre-toi et Trace ta Route » — un guide qui synthétise des années de réflexion, d'expériences et d'accompagnements personnels.</p>
+        <div class="timeline-dot">🏥</div>
+        <div>
+          <div class="timeline-year" id="tl2-y">15+ années de direction</div>
+          <h3 class="timeline-title" id="tl2-t">DAF — Œuvres Médicales MPE</h3>
+          <p class="timeline-desc" id="tl2-d">Directeur Administratif et Financier d'une institution de santé chrétienne. Gouvernance, rigueur, intégrité au service de la mission.</p>
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot">📚</div>
-        <div class="timeline-content">
-          <div class="timeline-year" id="tl3-year">2025 — Publication</div>
-          <h3 class="timeline-title" id="tl3-title">Disponible sur Amazon & YouScribe</h3>
-          <p class="timeline-desc" id="tl3-desc">Le livre est publié sur Amazon (version papier et numérique) et sur YouScribe. Les premiers lecteurs témoignent d'une transformation réelle. Le mouvement commence.</p>
+        <div class="timeline-dot">✝️</div>
+        <div>
+          <div class="timeline-year" id="tl3-y">Ministère continu</div>
+          <h3 class="timeline-title" id="tl3-t">Diacre & Leader à la YIC</h3>
+          <p class="timeline-desc" id="tl3-d">Diacre, Président Comité Finances, Président Comité Construction. Et avec Marlyse, accompagnement des couples.</p>
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot">🌍</div>
-        <div class="timeline-content">
-          <div class="timeline-year" id="tl4-year">2026 — Aujourd'hui</div>
-          <h3 class="timeline-title" id="tl4-title">Le mouvement s'amplifie</h3>
-          <p class="timeline-desc" id="tl4-desc">Conférences, coaching, communauté en ligne. Plusieurs nouveaux livres en préparation. La marque William Dounla se construit comme un écosystème de transformation pour la jeunesse africaine.</p>
+        <div class="timeline-dot">📖</div>
+        <div>
+          <div class="timeline-year" id="tl4-y">2025 — Publication</div>
+          <h3 class="timeline-title" id="tl4-t">Découvre-toi et Trace ta Route · Your Life Your Map</h3>
+          <p class="timeline-desc" id="tl4-d">Publication des deux premiers livres sur Amazon. Le mouvement commence. Les premières vies transformées.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🎵</div>
+        <div>
+          <div class="timeline-year" id="tl5-y">WD Harmony Records</div>
+          <h3 class="timeline-title" id="tl5-t">L'univers musical prend vie</h3>
+          <p class="timeline-desc" id="tl5-d">Chansons originales publiées sur Suno. Gospel, acoustique, afro-soul. Une autre manière de transmettre — toucher le cœur.</p>
         </div>
       </div>
       <div class="timeline-item reveal">
         <div class="timeline-dot">🔮</div>
-        <div class="timeline-content">
-          <div class="timeline-year" id="tl5-year">Bientôt</div>
-          <h3 class="timeline-title" id="tl5-title">Prochains livres en préparation</h3>
-          <p class="timeline-desc" id="tl5-desc">La série William Dounla continue. Plusieurs ouvrages sont en cours d'écriture, chacun explorant une facette du développement de soi dans le contexte africain.</p>
+        <div>
+          <div class="timeline-year" id="tl6-y">2026 & au-delà</div>
+          <h3 class="timeline-title" id="tl6-t">L'œuvre s'amplifie</h3>
+          <p class="timeline-desc" id="tl6-d">3 livres en préparation. Conférences. Formation. IA appliquée. Le mouvement grandit — pour la jeunesse africaine et les organisations.</p>
         </div>
       </div>
     </div>
@@ -284,16 +379,13 @@
 
 <hr class="divider">
 
-<!-- LOGO / BRAND -->
-<section class="logo-section">
-  <div class="container">
-    <div class="reveal">
-      <div class="tag" id="brand-tag">Identité de marque</div>
-      <h2 class="section-title" id="brand-title">La marque<br><em>William Dounla</em></h2>
-      <p class="lead" style="margin:0 auto;text-align:center;" id="brand-sub">Or et Bleu Nuit — Excellence, vision, structure, impact.</p>
-    </div>
-    <div class="logo-display reveal reveal-delay-2">
-      <img src="logo-wd.png" alt="Logo William Dounla — Charte graphique" />
+<!-- LOGO -->
+<section style="padding:80px 0;text-align:center;background:var(--nuit);">
+  <div class="container reveal">
+    <div class="tag" id="brand-tag">Identité de marque</div>
+    <h2 class="section-title" id="brand-title">La marque<br><em>William Dounla</em></h2>
+    <div style="max-width:700px;margin:3rem auto;border:1px solid rgba(200,169,81,0.15);border-radius:var(--radius);overflow:hidden;">
+      <img src="logo-wd.png" alt="Logo William Dounla — Charte graphique" style="width:100%;display:block;" />
     </div>
   </div>
 </section>
@@ -301,19 +393,17 @@
 <hr class="divider">
 
 <!-- CTA -->
-<section class="about-cta">
+<section class="apropos-cta">
   <div class="container reveal">
     <div class="tag" id="cta-tag">Travailler ensemble</div>
     <h2 class="display-title" id="cta-title">Tu veux que William<br><em>intervienne chez toi ?</em></h2>
-    <p class="lead" style="margin:1.5rem auto 2.5rem;text-align:center;" id="cta-sub">
-      Conférence, atelier, coaching d'équipe ou partenariat — écris-nous.
-    </p>
+    <p class="lead" style="margin:1.5rem auto 2.5rem;text-align:center;" id="cta-sub">Conférence, atelier leadership, formation IA, coaching institutionnel ou partenariat.</p>
     <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
       <a class="btn btn-gold" href="contact.html" id="cta-btn1">
         Prendre contact
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a class="btn btn-outline" href="livre.html" id="cta-btn2">Découvrir le livre</a>
+      <a class="btn btn-outline" href="livre.html" id="cta-btn2">Découvrir les livres</a>
     </div>
   </div>
 </section>
@@ -325,18 +415,19 @@
       <div class="footer-brand">
         <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
         <p id="footer-tagline">Auteur · Compositeur · Stratège humain · Homme de conviction</p>
+        <p style="font-size:0.78rem;color:var(--or);margin-top:0.8rem;font-style:italic;" id="footer-mission">Servir Jésus-Christ sans compromis.</p>
       </div>
       <div class="footer-col">
         <h4 id="footer-nav-title">Navigation</h4>
         <a id="footer-link-accueil" href="index.html">Accueil</a>
-        <a id="footer-link-livre" href="livre.html">Le Livre</a>
+        <a id="footer-link-livre" href="livre.html">Livres</a>
+        <a href="harmonie.html">Harmonie</a>
         <a id="footer-link-apropos" href="apropos.html">À propos</a>
         <a id="footer-link-contact" href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h4 id="footer-social-title">Réseaux</h4>
         <a href="https://wa.me/237699545260" target="_blank">WhatsApp</a>
-        <a href="#" target="_blank">TikTok</a>
         <a href="https://www.linkedin.com/in/william-dounla-b7b93088/" target="_blank">LinkedIn</a>
         <a href="https://suno.com/@williamdounla" target="_blank">WD Harmony</a>
         <a href="#" target="_blank">Instagram</a>
@@ -352,83 +443,36 @@
 
 <script src="main.js"></script>
 <script>
-const aboutTranslations = {
-  fr: {
-    pageLabel:"À propos", aboutTag:"L'auteur",
-    heroTitle:"William Dounla —<br><em>Stratège de transformation</em>",
-    heroSub:"Auteur · Conférencier · Guide de vie · Bâtisseur de trajectoires",
-    portraitTag:"William Dounla", portraitSub:"Auteur · Yaoundé, Cameroun",
-    storyTag:"Mon histoire", storyTitle:"L'homme derrière<br><em>le mouvement</em>",
-    p1:"<strong>William Dounla</strong> est un auteur camerounais qui a compris très tôt que le manque de connaissance de soi est l'un des plus grands obstacles à l'épanouissement des jeunes africains.",
-    p2:"Pendant des années, il a observé autour de lui des jeunes brillants, doués, pleins d'énergie — mais perdus. Non pas par manque d'intelligence, mais par manque d'outils pour se connaître, se choisir et s'orienter.",
-    p3:"C'est cette observation qui l'a poussé à écrire <strong>« Découvre-toi et Trace ta Route »</strong> — un guide pratique et authentique, ancré dans la réalité africaine.",
-    p4:"Aujourd'hui, William est un <strong>stratège de transformation</strong>, un conférencier qui intervient dans les universités et les entreprises, et un bâtisseur de trajectoires pour la jeunesse africaine.",
-    missionTag:"Sa mission",
-    missionText:"\"Je n'écris pas des livres. Je construis un mouvement pour que la jeunesse africaine se lève, se découvre et trace sa propre route — pas celle qu'on a tracée pour elle.\"",
-    v1t:"Authenticité",v1d:"Parler vrai, depuis le terrain africain, sans artifices importés.",
-    v2t:"Praticité",v2d:"Des outils concrets, actionnables dès la première lecture.",
-    v3t:"Ancrage africain",v3d:"Un regard sur le développement personnel qui prend en compte nos réalités.",
-    v4t:"Impact durable",v4d:"Transformer des vies pour plusieurs décennies, pas juste inspirer pour quelques heures.",
-    contactBtn:"Me contacter",
-    timelineTag:"Parcours",timelineTitle:"Les étapes<br><em>du mouvement</em>",
-    tl1y:"Les premières années",tl1t:"L'observation et la prise de conscience",tl1d:"William observe autour de lui des jeunes brillants mais perdus. Il commence à développer une vision : donner aux jeunes africains les outils de connaissance de soi qui manquent.",
-    tl2y:"L'écriture",tl2t:"Naissance du premier livre",tl2d:"Après des mois de travail, William finalise « Découvre-toi et Trace ta Route » — un guide qui synthétise des années de réflexion et d'accompagnements personnels.",
-    tl3y:"2025 — Publication",tl3t:"Disponible sur Amazon & YouScribe",tl3d:"Le livre est publié. Les premiers lecteurs témoignent d'une transformation réelle. Le mouvement commence.",
-    tl4y:"2026 — Aujourd'hui",tl4t:"Le mouvement s'amplifie",tl4d:"Conférences, coaching, communauté en ligne. Plusieurs nouveaux livres en préparation.",
-    tl5y:"Bientôt",tl5t:"Prochains livres en préparation",tl5d:"La série William Dounla continue. Plusieurs ouvrages en cours d'écriture, chacun explorant une facette du développement de soi dans le contexte africain.",
-    brandTag:"Identité de marque",brandTitle:"La marque<br><em>William Dounla</em>",brandSub:"Or et Bleu Nuit — Excellence, vision, structure, impact.",
-    ctaTag:"Travailler ensemble",ctaTitle:"Tu veux que William<br><em>intervienne chez toi ?</em>",ctaSub:"Conférence, atelier, coaching d'équipe ou partenariat — écris-nous.",
-    ctaBtn1:"Prendre contact",ctaBtn2:"Découvrir le livre",
-  },
-  en: {
-    pageLabel:"About", aboutTag:"The author",
-    heroTitle:"William Dounla —<br><em>Transformation strategist</em>",
-    heroSub:"Author · Speaker · Life Guide · Path Builder",
-    portraitTag:"William Dounla", portraitSub:"Author · Yaoundé, Cameroon",
-    storyTag:"My story", storyTitle:"The man behind<br><em>the movement</em>",
-    p1:"<strong>William Dounla</strong> is a Cameroonian author who understood early that lack of self-knowledge is one of the greatest obstacles to the fulfillment of young Africans.",
-    p2:"For years, he observed brilliant, talented, energetic young people — but lost. Not for lack of intelligence, but for lack of tools to know themselves, choose themselves and find direction.",
-    p3:"This observation pushed him to write <strong>\"Discover Yourself and Trace Your Path\"</strong> — a practical, authentic guide rooted in African reality.",
-    p4:"Today, William is a <strong>transformation strategist</strong>, a speaker who intervenes in universities and companies, and a path builder for African youth.",
-    missionTag:"His mission",
-    missionText:"\"I don't write books. I build a movement so that African youth rises, discovers itself and traces its own path — not the one traced for them.\"",
-    v1t:"Authenticity",v1d:"Speaking truth, from the African ground, without imported artifices.",
-    v2t:"Practicality",v2d:"Concrete tools, actionable from the very first reading.",
-    v3t:"African grounding",v3d:"A view of personal development that takes our realities into account.",
-    v4t:"Lasting impact",v4d:"Transforming lives for decades, not just inspiring for a few hours.",
-    contactBtn:"Contact me",
-    timelineTag:"Journey",timelineTitle:"The steps<br><em>of the movement</em>",
-    tl1y:"Early years",tl1t:"Observation and awakening",tl1d:"William observes brilliant but lost young people around him. He begins to develop a vision: giving African youth the self-knowledge tools they so desperately lack.",
-    tl2y:"Writing",tl2t:"Birth of the first book",tl2d:"After months of work, William finalizes 'Discover Yourself and Trace Your Path' — a guide synthesizing years of reflection and personal accompaniment.",
-    tl3y:"2025 — Publication",tl3t:"Available on Amazon & YouScribe",tl3d:"The book is published. The first readers testify to real transformation. The movement begins.",
-    tl4y:"2026 — Today",tl4t:"The movement amplifies",tl4d:"Conferences, coaching, online community. Several new books in preparation.",
-    tl5y:"Coming soon",tl5t:"Next books in preparation",tl5d:"The William Dounla series continues. Several works in progress, each exploring a facet of self-development in the African context.",
-    brandTag:"Brand identity",brandTitle:"The<br><em>William Dounla brand</em>",brandSub:"Gold and Midnight Blue — Excellence, vision, structure, impact.",
-    ctaTag:"Work together",ctaTitle:"Want William to<br><em>speak at your event?</em>",ctaSub:"Conference, workshop, team coaching or partnership — write to us.",
-    ctaBtn1:"Get in touch",ctaBtn2:"Discover the book",
-  }
-};
 function updatePageLang(lang) {
-  const t = aboutTranslations[lang];
-  const set = (id, val, html=false) => { const el=document.getElementById(id); if(el){if(html)el.innerHTML=val;else el.textContent=val;} };
-  set('page-label',t.pageLabel); set('about-tag',t.aboutTag);
-  set('about-hero-title',t.heroTitle,true); set('about-hero-sub',t.heroSub);
-  set('portrait-tag',t.portraitTag); set('portrait-sub',t.portraitSub);
-  set('story-tag',t.storyTag); set('story-title',t.storyTitle,true);
-  set('story-p1',t.p1,true); set('story-p2',t.p2,true); set('story-p3',t.p3,true); set('story-p4',t.p4,true);
-  set('mission-tag',t.missionTag); set('mission-text',t.missionText);
-  set('v1t',t.v1t);set('v1d',t.v1d);set('v2t',t.v2t);set('v2d',t.v2d);
-  set('v3t',t.v3t);set('v3d',t.v3d);set('v4t',t.v4t);set('v4d',t.v4d);
-  set('about-contact-btn',t.contactBtn);
-  set('timeline-tag',t.timelineTag); set('timeline-title',t.timelineTitle,true);
-  set('tl1-year',t.tl1y);set('tl1-title',t.tl1t);set('tl1-desc',t.tl1d);
-  set('tl2-year',t.tl2y);set('tl2-title',t.tl2t);set('tl2-desc',t.tl2d);
-  set('tl3-year',t.tl3y);set('tl3-title',t.tl3t);set('tl3-desc',t.tl3d);
-  set('tl4-year',t.tl4y);set('tl4-title',t.tl4t);set('tl4-desc',t.tl4d);
-  set('tl5-year',t.tl5y);set('tl5-title',t.tl5t);set('tl5-desc',t.tl5d);
-  set('brand-tag',t.brandTag);set('brand-title',t.brandTitle,true);set('brand-sub',t.brandSub);
-  set('cta-tag',t.ctaTag);set('cta-title',t.ctaTitle,true);set('cta-sub',t.ctaSub);
-  set('cta-btn1',t.ctaBtn1);set('cta-btn2',t.ctaBtn2);
+  const t={fr:{pageLabel:"À propos",heroTag:"L'auteur",heroTitle:"William Dounla —<br><em>Homme de conviction</em>",heroSub:"Auteur · Économiste · DAF · Formateur en leadership · Diacre · Compositeur · Explorateur de l'IA",bioTag:"Biographie",bioTitle:"À la croisée de la réflexion,<br><em>du leadership et de la foi</em>",bioP1:"<strong style='color:var(--blanc)'>William Dounla</strong> est économiste de formation, titulaire d'un Master en Politiques et Négociation Commerciale (Université de Yaoundé II-Soa). Fort de plus de quinze années d'expérience à des postes de direction, il a exercé notamment comme Directeur Administratif et Financier au sein des Œuvres Médicales de la Mission du Plein Évangile au Cameroun.",bioP2:"Formé au leadership au <strong style='color:var(--blanc)'>Haggai Institute</strong> (États-Unis), il a développé une conviction : les organisations chrétiennes ont besoin, autant que les entreprises, de gouvernance solide, de gestion transparente et de structures capables de traverser les générations.",bioP3:"Parallèlement à ses responsabilités professionnelles, William Dounla s'est engagé dans la <strong style='color:var(--blanc)'>formation de jeunes leaders et de managers africains</strong>. Entrepreneur, formateur et passionné d'agriculture.",bioP4:"Ce qui le distingue vraiment : sa capacité à <strong style='color:var(--blanc)'>donner du sens</strong> — relier la technologie et l'humain, la foi et la modernité, la réflexion et l'action.",bioQuote:'"Gérer avec rigueur ne diminue pas la foi. Cela l\'honore. Une œuvre confiée par Dieu mérite une gestion digne de cette confiance."',dimTitle:"Ses 6 dimensions",d1t:"Auteur-Penseur",d1d:"5 livres — connaissance de soi, leadership, gouvernance d'église",d2t:"Stratège humain",d2d:"DAF 15+ ans · Rigueur, redevabilité, intégrité institutionnelle",d3t:"Homme de conviction",d3d:"Servir Jésus-Christ sans compromis — foi publique et vécue",d4t:"Créateur artistique",d4d:"WD Harmony Records · Gospel, acoustique, afro-soul",d5t:"Explorateur de l'IA",d5d:"IA au service de l'humain — création, formation, gouvernance",d6t:"Homme de famille",d6d:"Marié à Marlyse · Accompagnateur de couples · Transmission",bioCta:"Me contacter",formTag:"Formation & Expertise",formTitle:"Un parcours<br><em>de rigueur et de conviction</em>",f1l:"Formation académique",f1t:"Master en Politiques et Négociation Commerciale",f1d:"Université de Yaoundé II-Soa · Fondation en économie, gestion et stratégie.",f2l:"Formation en leadership",f2t:"Haggai Institute",f2d:"États-Unis · Référence internationale en leadership chrétien.",f3l:"Poste principal",f3t:"Directeur Administratif et Financier",f3d:"Œuvres Médicales MPE Cameroun · 15+ années d'expérience.",f4l:"Expertise émergente",f4t:"Intelligence Artificielle appliquée",f4d:"IA au service de l'humain — création, formation, gouvernance, leadership.",minTag:"Foi & Ministère",minTitle:"Servir Jésus-Christ<br><em>sans compromis</em>",minSub:"Au sein de la Yaoundé International Chapel, assemblée locale de la MPE Cameroun.",m1t:"Diacre",m1d:"Engagement au service de l'Église locale. Foi publique, vécue simplement.",m2t:"Président du Comité des Finances",m2d:"La rigueur financière au service de la mission de Dieu.",m3t:"Président du Comité de Construction",m3d:"Superviser les projets de construction — terrain concret où il vit ses principes.",m4t:"Accompagnateur de couples",m4d:"William et Marlyse accompagnent les fiancés — enseignement, conseil, préparation au mariage.",tlTag:"Parcours",tlTitle:"Les étapes<br><em>d'une vie bâtie avec conviction</em>",tl1y:"Formation",tl1t:"Master & Haggai Institute",tl1d:"Formation en économie à Yaoundé II-Soa, puis au Haggai Institute aux États-Unis.",tl2y:"15+ années de direction",tl2t:"DAF — Œuvres Médicales MPE",tl2d:"Directeur Administratif et Financier. Gouvernance, rigueur, intégrité au service de la mission.",tl3y:"Ministère continu",tl3t:"Diacre & Leader à la YIC",tl3d:"Diacre, Président Comité Finances, Président Comité Construction. Accompagnement des couples avec Marlyse.",tl4y:"2025 — Publication",tl4t:"Découvre-toi et Trace ta Route · Your Life Your Map",tl4d:"Publication des deux premiers livres sur Amazon. Le mouvement commence.",tl5y:"WD Harmony Records",tl5t:"L'univers musical prend vie",tl5d:"Chansons originales sur Suno. Gospel, acoustique, afro-soul.",tl6y:"2026 & au-delà",tl6t:"L'œuvre s'amplifie",tl6d:"3 livres en préparation. Conférences. Formation. IA appliquée.",brandTag:"Identité de marque",brandTitle:"La marque<br><em>William Dounla</em>",ctaTag:"Travailler ensemble",ctaTitle:"Tu veux que William<br><em>intervienne chez toi ?</em>",ctaSub:"Conférence, atelier leadership, formation IA, coaching institutionnel ou partenariat.",ctaBtn1:"Prendre contact",ctaBtn2:"Découvrir les livres"},en:{pageLabel:"About",heroTag:"The author",heroTitle:"William Dounla —<br><em>Man of Conviction</em>",heroSub:"Author · Economist · CFO · Leadership trainer · Deacon · Composer · AI Explorer",bioTag:"Biography",bioTitle:"At the crossroads of reflection,<br><em>leadership and faith</em>",bioP1:"<strong style='color:var(--blanc)'>William Dounla</strong> is an economist by training, holder of a Master's in Trade Policies and Negotiation (University of Yaoundé II-Soa). With over fifteen years of experience in leadership positions, he served as Chief Financial and Administrative Officer at the Medical Works of the Full Gospel Mission of Cameroon.",bioP2:"Trained in leadership at the <strong style='color:var(--blanc)'>Haggai Institute</strong> (USA), he has developed a conviction: Christian organizations need, just as much as businesses, solid governance, transparent management and structures capable of lasting generations.",bioP3:"Alongside his professional responsibilities, William Dounla has engaged in <strong style='color:var(--blanc)'>training young leaders and African managers</strong>. Entrepreneur, trainer and passionate about agriculture.",bioP4:"What truly distinguishes him: his capacity to <strong style='color:var(--blanc)'>give meaning</strong> — connecting technology and humanity, faith and modernity, reflection and action.",bioQuote:'"Managing with rigor does not diminish faith. It honors it. A work entrusted by God deserves management worthy of that trust."',dimTitle:"His 6 dimensions",d1t:"Author-Thinker",d1d:"5 books — self-knowledge, leadership, church governance",d2t:"Human Strategist",d2d:"CFO 15+ years · Rigor, accountability, institutional integrity",d3t:"Man of Conviction",d3d:"Serving Jesus Christ without compromise — public, lived faith",d4t:"Creative Artist",d4d:"WD Harmony Records · Gospel, acoustic, afro-soul",d5t:"AI Explorer",d5d:"AI in service of the human — creation, training, governance",d6t:"Family Man",d6d:"Married to Marlyse · Couple counselor · Transmission",bioCta:"Contact me",formTag:"Training & Expertise",formTitle:"A career<br><em>of rigor and conviction</em>",f1l:"Academic training",f1t:"Master's in Trade Policies and Negotiation",f1d:"University of Yaoundé II-Soa · Foundation in economics, management and strategy.",f2l:"Leadership training",f2t:"Haggai Institute",f2d:"United States · International reference in Christian leadership.",f3l:"Main position",f3t:"Chief Financial and Administrative Officer",f3d:"Medical Works of the Full Gospel Mission of Cameroon · 15+ years.",f4l:"Emerging expertise",f4t:"Applied Artificial Intelligence",f4d:"AI in service of the human — creation, training, governance, leadership.",minTag:"Faith & Ministry",minTitle:"Serving Jesus Christ<br><em>without compromise</em>",minSub:"At Yaoundé International Chapel, local assembly of the Full Gospel Mission of Cameroon.",m1t:"Deacon",m1d:"Commitment in service of the local Church. Public faith, lived simply.",m2t:"Chairman of the Finance Committee",m2d:"Financial rigor in service of God's mission.",m3t:"Chairman of the Construction Committee",m3d:"Supervising church construction projects — where he lives his principles daily.",m4t:"Couple counselor",m4d:"William and Marlyse accompany engaged couples — teaching, counsel, marriage preparation.",tlTag:"Journey",tlTitle:"The steps<br><em>of a life built with conviction</em>",tl1y:"Training",tl1t:"Master's & Haggai Institute",tl1d:"Economics training in Yaoundé, then at the Haggai Institute in the USA.",tl2y:"15+ years of leadership",tl2t:"CFO — Medical Works MPE",tl2d:"Chief Financial and Administrative Officer. Governance, rigor, integrity.",tl3y:"Ongoing ministry",tl3t:"Deacon & Leader at YIC",tl3d:"Deacon, Finance Committee Chair, Construction Committee Chair. Couple counseling with Marlyse.",tl4y:"2025 — Publication",tl4t:"Discover Yourself · Your Life Your Map",tl4d:"Publication of first two books on Amazon. The movement begins.",tl5y:"WD Harmony Records",tl5t:"The musical universe comes to life",tl5d:"Original songs on Suno. Gospel, acoustic, afro-soul.",tl6y:"2026 & beyond",tl6t:"The work amplifies",tl6d:"3 books in preparation. Conferences. Training. Applied AI.",brandTag:"Brand identity",brandTitle:"The<br><em>William Dounla brand</em>",ctaTag:"Work together",ctaTitle:"Want William to<br><em>speak at your event?</em>",ctaSub:"Conference, leadership workshop, AI training, institutional coaching or partnership.",ctaBtn1:"Get in touch",ctaBtn2:"Discover the books"}};
+  const d=t[lang];
+  const s=(id,v,h)=>{const e=document.getElementById(id);if(e){if(h)e.innerHTML=v;else e.textContent=v;}};
+  s('page-label',d.pageLabel);s('hero-tag',d.heroTag);s('hero-title',d.heroTitle,1);s('hero-sub',d.heroSub);
+  s('bio-tag',d.bioTag);s('bio-title',d.bioTitle,1);
+  s('bio-p1',d.bioP1,1);s('bio-p2',d.bioP2,1);s('bio-p3',d.bioP3,1);s('bio-p4',d.bioP4,1);
+  s('bio-quote',d.bioQuote);s('dim-title',d.dimTitle);
+  s('d1t',d.d1t);s('d1d',d.d1d);s('d2t',d.d2t);s('d2d',d.d2d);
+  s('d3t',d.d3t);s('d3d',d.d3d);s('d4t',d.d4t);s('d4d',d.d4d);
+  s('d5t',d.d5t);s('d5d',d.d5d);s('d6t',d.d6t);s('d6d',d.d6d);
+  s('bio-cta',d.bioCta);
+  s('form-tag',d.formTag);s('form-title',d.formTitle,1);
+  s('f1-label',d.f1l);s('f1-title',d.f1t);s('f1-desc',d.f1d);
+  s('f2-label',d.f2l);s('f2-title',d.f2t);s('f2-desc',d.f2d);
+  s('f3-label',d.f3l);s('f3-title',d.f3t);s('f3-desc',d.f3d);
+  s('f4-label',d.f4l);s('f4-title',d.f4t);s('f4-desc',d.f4d);
+  s('min-tag',d.minTag);s('min-title',d.minTitle,1);s('min-sub',d.minSub);
+  s('m1-title',d.m1t);s('m1-desc',d.m1d);s('m2-title',d.m2t);s('m2-desc',d.m2d);
+  s('m3-title',d.m3t);s('m3-desc',d.m3d);s('m4-title',d.m4t);s('m4-desc',d.m4d);
+  s('tl-tag',d.tlTag);s('tl-title',d.tlTitle,1);
+  s('tl1-y',d.tl1y);s('tl1-t',d.tl1t);s('tl1-d',d.tl1d);
+  s('tl2-y',d.tl2y);s('tl2-t',d.tl2t);s('tl2-d',d.tl2d);
+  s('tl3-y',d.tl3y);s('tl3-t',d.tl3t);s('tl3-d',d.tl3d);
+  s('tl4-y',d.tl4y);s('tl4-t',d.tl4t);s('tl4-d',d.tl4d);
+  s('tl5-y',d.tl5y);s('tl5-t',d.tl5t);s('tl5-d',d.tl5d);
+  s('tl6-y',d.tl6y);s('tl6-t',d.tl6t);s('tl6-d',d.tl6d);
+  s('brand-tag',d.brandTag);s('brand-title',d.brandTitle,1);
+  s('cta-tag',d.ctaTag);s('cta-title',d.ctaTitle,1);s('cta-sub',d.ctaSub);
+  s('cta-btn1',d.ctaBtn1);s('cta-btn2',d.ctaBtn2);
 }
 </script>
 </body>
