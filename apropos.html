@@ -139,12 +139,27 @@
     .apropos-cta { padding:80px 0; text-align:center; background:var(--nuit); }
 
     @media(max-width:900px){
-      .portrait-layout{grid-template-columns:1fr;}
+      .portrait-layout{grid-template-columns:1fr;gap:2rem;}
       .portrait-col{position:static;}
       .portrait-secondary{display:none;}
+      .portrait-main{max-width:320px;margin:0 auto;display:block;}
+      .portrait-chantier{max-width:320px;margin:1rem auto 0;display:block;}
       .dimensions-grid{grid-template-columns:1fr;}
       .formation-grid{grid-template-columns:1fr;}
       .ministere-layout{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      .page-hero{min-height:45vh;padding:calc(var(--nav-h) + 40px) 0 50px;}
+      .display-title{font-size:2.2rem;}
+      .section-title{font-size:1.6rem;}
+      .portrait-main{max-width:260px;}
+      .highlight-box{padding:1.5rem;}
+      .highlight-box p{font-size:1rem;}
+      .timeline::before{left:16px;}
+      .timeline-dot{width:32px;height:32px;font-size:0.85rem;}
+      .timeline-item{gap:1.2rem;}
+      .formation-card{padding:1.5rem;}
+      .ministere-card{padding:1.5rem;}
     }
   </style>
 </head>
