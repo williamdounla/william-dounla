@@ -109,13 +109,15 @@
     .testi-big {
       display:flex; gap:0; align-items:stretch;
       background:var(--nuit-3); border:1px solid rgba(200,169,81,0.15);
-      border-radius:var(--radius); overflow:hidden;
+      border-radius:var(--radius); overflow:hidden; margin-bottom:1.5rem;
     }
-    .testi-big img { width:300px; object-fit:cover; object-position:top; flex-shrink:0; }
-    .testi-big-content { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
+    .testi-big img {
+      width:260px; object-fit:cover; object-position:top; flex-shrink:0;
+    }
+    .testi-big-content { padding:2.5rem; display:flex; flex-direction:column; justify-content:center; }
     .testi-stars { color:var(--or); font-size:0.9rem; margin-bottom:1rem; }
     .testi-quote-text {
-      font-family:var(--font-display); font-size:1.2rem;
+      font-family:var(--font-display); font-size:1.15rem;
       font-style:italic; color:var(--blanc); line-height:1.7; margin-bottom:1.5rem;
     }
 
@@ -134,7 +136,8 @@
       .livre-banniere{max-width:280px;margin:1rem auto 0;}
       .livres-grid{grid-template-columns:1fr;}
       .testi-big{flex-direction:column;}
-      .testi-big img{width:100%;height:220px;}
+      .testi-big img{display:none;}
+      .testi-big-content{padding:2rem;}
       .waitlist-box{padding:2rem 1.5rem;}
     }
     @media(max-width:600px){
@@ -146,9 +149,8 @@
       .order-btn{padding:12px 14px;font-size:0.78rem;}
       .livres-grid .livre-card:last-child>div{grid-template-columns:1fr!important;}
       .livres-grid .livre-card:last-child>div img{height:200px;width:100%;object-fit:cover;}
-      .testi-big img{height:180px;}
-      .testi-big-content{padding:1.5rem;}
       .testi-quote-text{font-size:1rem;}
+      .testi-big-content{padding:1.5rem;}
     }
   </style>
 </head>
@@ -278,20 +280,30 @@
     <div class="testi-big reveal" style="margin-bottom:1.5rem;">
       <img src="temoignage-zenab.png" alt="Zenab Mforifum" />
       <div class="testi-big-content">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,169,81,0.1);border:2px solid rgba(200,169,81,0.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">✍️</div>
+          <div>
+            <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Zenab Mforifum</div>
+            <div style="font-size:0.75rem;color:var(--gris);">Auteure de « Je partage ta peine »</div>
+          </div>
+        </div>
         <div class="testi-stars">★★★★★</div>
         <p class="testi-quote-text" id="t-zenab">"Ce livre n'est pas seulement à lire. Il est à vivre. À méditer. À pratiquer."</p>
-        <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Zenab Mforifum</div>
-        <div style="font-size:0.78rem;color:var(--gris);">Auteure de « Je partage ta peine »</div>
       </div>
     </div>
     <!-- Christelle -->
     <div class="testi-big reveal">
       <img src="temoignage-christelle.png" alt="Dr Christelle MBAKOP" style="object-position:center;" />
       <div class="testi-big-content">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(37,99,235,0.1);border:2px solid rgba(37,99,235,0.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩‍⚕️</div>
+          <div>
+            <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Dr Christelle MBAKOP</div>
+            <div style="font-size:0.75rem;color:var(--gris);">Pédiatre</div>
+          </div>
+        </div>
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote-text" id="t-christelle">"J'ai lu les 22 premières pages avec avidité. C'est une pépite... Je viens de me rendre compte que je ne savais pas vraiment qui j'étais. Il est temps que je me reconnecte à mon original."</p>
-        <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Dr Christelle MBAKOP</div>
-        <div style="font-size:0.78rem;color:var(--gris);">Pédiatre</div>
+        <p class="testi-quote-text" id="t-christelle">"J'ai lu les 22 premières pages avec avidité. C'est une pépite... Il est temps que je me reconnecte à mon original."</p>
       </div>
     </div>
   </div>
