@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livres — William Dounla</title>
+  <meta name="description" content="L'œuvre de William Dounla — Collection Réveille le géant africain en toi. 5 livres sur la connaissance de soi, le leadership africain, la gouvernance d'église." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      min-height: 55vh; display:flex; align-items:flex-end;
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+      position:relative; overflow:hidden;
+    }
+    .page-hero-bg {
+      position:absolute; inset:0;
+      background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(200,169,81,0.09) 0%, transparent 65%),
+                  radial-gradient(ellipse 40% 50% at 10% 80%, rgba(28,28,46,0.8) 0%, transparent 60%);
+    }
+    .collection-tag {
+      display:inline-block; font-size:0.72rem; letter-spacing:0.2em;
+      text-transform:uppercase; color:var(--or);
+      border:1px solid rgba(200,169,81,0.25); padding:5px 14px;
+      border-radius:2px; margin-bottom:1rem;
+    }
+
+    /* ── LIVRE FEATURED ── */
+    .livre-featured {
+      padding:100px 0; background:var(--nuit-2);
+    }
+    .livre-featured-layout {
+      display:grid; grid-template-columns:1fr 1.4fr;
+      gap:6rem; align-items:start;
+    }
+    .livre-cover-wrap {
+      position:sticky; top:calc(var(--nav-h) + 2rem);
+    }
+    .livre-cover-img {
+      width:100%; display:block;
+      border-radius:4px 12px 12px 4px;
+      box-shadow:-8px 0 0 rgba(0,0,0,0.6), 10px 30px 80px rgba(200,169,81,0.2);
+      transition:transform 0.5s;
+      transform:rotateY(-5deg);
+    }
+    .livre-cover-img:hover { transform:rotateY(0deg); }
+    .livre-banniere {
+      width:100%; display:block; margin-top:1.5rem;
+      border-radius:4px; border:1px solid rgba(200,169,81,0.1);
+    }
+    .status-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+      padding:5px 14px; border-radius:2px; margin-bottom:1.5rem;
+    }
+    .status-published { background:rgba(45,106,79,0.2); color:#95d5b2; border:1px solid rgba(45,106,79,0.3); }
+    .status-soon { background:rgba(200,169,81,0.1); color:var(--or); border:1px solid rgba(200,169,81,0.2); }
+    .status-wip { background:rgba(255,255,255,0.05); color:var(--gris); border:1px solid rgba(255,255,255,0.1); }
+
+    /* Order buttons */
+    .order-btns { display:flex; flex-direction:column; gap:0.75rem; margin-top:1.5rem; }
+    .order-btn {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 20px; border-radius:var(--radius);
+      text-decoration:none; font-size:0.85rem; font-weight:500;
+      transition:all 0.3s; border:1px solid;
+    }
+    .order-wa { background:rgba(37,211,102,0.1); border-color:rgba(37,211,102,0.3); color:#25D366; }
+    .order-wa:hover { background:rgba(37,211,102,0.2); transform:translateX(4px); }
+    .order-amazon { background:rgba(255,153,0,0.1); border-color:rgba(255,153,0,0.3); color:#FF9900; }
+    .order-amazon:hover { background:rgba(255,153,0,0.2); transform:translateX(4px); }
+    .order-youscribe { background:rgba(200,169,81,0.1); border-color:rgba(200,169,81,0.3); color:var(--or); }
+    .order-youscribe:hover { background:var(--or-dim); transform:translateX(4px); }
+
+    /* Benefits */
+    .benefit-item { display:flex; gap:1rem; align-items:flex-start; margin-bottom:0.8rem; }
+    .benefit-check { color:var(--or); font-size:1.1rem; flex-shrink:0; }
+
+    /* ── AUTRES LIVRES ── */
+    .autres-livres { padding:100px 0; background:var(--nuit); }
+    .livres-grid {
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:2rem; margin-top:4rem;
+    }
+    .livre-card {
+      background:var(--nuit-3); border:1px solid rgba(200,169,81,0.1);
+      border-radius:var(--radius); overflow:hidden;
+      transition:all var(--transition); display:flex; flex-direction:column;
+    }
+    .livre-card:hover { border-color:rgba(200,169,81,0.3); transform:translateY(-5px); box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .livre-card-img {
+      width:100%; aspect-ratio:2/3; object-fit:cover;
+      object-position:top; display:block;
+      transition:transform 0.5s;
+    }
+    .livre-card:hover .livre-card-img { transform:scale(1.03); }
+    .livre-card-body { padding:2rem; flex:1; display:flex; flex-direction:column; }
+    .livre-univers {
+      font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+      color:var(--or); margin-bottom:0.8rem;
+      display:flex; align-items:center; gap:8px;
+    }
+    .livre-univers::before { content:''; display:block; width:20px; height:1px; background:var(--or); }
+    .livre-card-title { font-family:var(--font-display); font-size:1.3rem; line-height:1.25; margin-bottom:0.5rem; }
+    .livre-card-sub { font-size:0.78rem; color:var(--gris); font-style:italic; line-height:1.6; margin-bottom:auto; padding-bottom:1.5rem; }
+    .livre-card-footer { border-top:1px solid rgba(200,169,81,0.08); padding-top:1rem; }
+
+    /* ── TEMOIGNAGE ── */
+    .testi-section { padding:80px 0; background:var(--nuit-2); }
+    .testi-big {
+      display:flex; gap:0; align-items:stretch;
+      background:var(--nuit-3); border:1px solid rgba(200,169,81,0.15);
+      border-radius:var(--radius); overflow:hidden;
+    }
+    .testi-big img { width:300px; object-fit:cover; object-position:top; flex-shrink:0; }
+    .testi-big-content { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
+    .testi-stars { color:var(--or); font-size:0.9rem; margin-bottom:1rem; }
+    .testi-quote-text {
+      font-family:var(--font-display); font-size:1.2rem;
+      font-style:italic; color:var(--blanc); line-height:1.7; margin-bottom:1.5rem;
+    }
+
+    /* ── LISTE ATTENTE ── */
+    .waitlist-section { padding:80px 0; background:var(--nuit); text-align:center; }
+    .waitlist-box {
+      max-width:600px; margin:2rem auto 0;
+      background:var(--nuit-3); border:1px solid rgba(200,169,81,0.2);
+      padding:3rem; border-radius:var(--radius);
+    }
+
+    @media(max-width:900px){
+      .livre-featured-layout{grid-template-columns:1fr;}
+      .livre-cover-wrap{position:static;}
+      .livres-grid{grid-template-columns:1fr;}
+      .testi-big{flex-direction:column;}
+      .testi-big img{width:100%;height:200px;}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor"><div class="cursor-dot" style="position:fixed"></div><div class="cursor-ring" style="position:fixed"></div></div>
+<div class="mobile-menu"><button class="mobile-close">✕</button>
+  <a id="mob-accueil" href="index.html">Accueil</a>
+  <a id="mob-livre" href="livre.html">Livres</a>
+  <a id="mob-harmonie" href="harmonie.html">Harmonie</a>
+  <a id="mob-apropos" href="apropos.html">À propos</a>
+  <a id="mob-contact" href="contact.html">Contact</a>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+  <ul class="nav-links">
+    <li><a id="nav-accueil" href="index.html">Accueil</a></li>
+    <li><a id="nav-livre" href="livre.html" class="active">Livres</a></li>
+    <li><a id="nav-harmonie" href="harmonie.html">Harmonie</a></li>
+    <li><a id="nav-apropos" href="apropos.html">À propos</a></li>
+    <li><a id="nav-contact" href="contact.html">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="nav-lang"><button class="lang-btn" data-lang="fr">FR</button><button class="lang-btn" data-lang="en">EN</button></div>
+    <a id="nav-cta" class="nav-cta" href="#commander">Commander</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="page-breadcrumb"><a href="index.html">William Dounla</a> <span id="breadcrumb">Livres</span></div>
+    <div class="collection-tag" id="collection-tag">Collection — Réveille le géant africain en toi</div>
+    <h1 class="display-title" id="page-title">L'œuvre de<br><em>William Dounla</em></h1>
+    <p style="color:var(--gris);margin-top:1rem;max-width:560px;" id="page-sub">
+      Cinq livres. Un seul fil conducteur : aider les personnes et les organisations à devenir plus conscientes, plus responsables et plus alignées avec la vérité.
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LIVRE 1 — DÉCOUVRE-TOI (FEATURED) -->
+<section class="livre-featured" id="commander">
+  <div class="container">
+    <div class="livre-featured-layout">
+      <div class="livre-cover-wrap reveal">
+        <img class="livre-cover-img" src="couverture.png" alt="Découvre-toi et Trace ta Route — William Dounla" />
+        <img class="livre-banniere" src="banniere-livre.png" alt="Clarifie ta Vision. Transforme ta Vie." />
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="livre-univers" id="l1-univers">La Personne</div>
+        <span class="status-badge status-published">✓ Publié · Amazon & YouScribe</span>
+        <h2 class="section-title" id="l1-title">Découvre-toi et<br><em>Trace ta Route</em></h2>
+        <p style="font-size:0.78rem;color:var(--or);font-style:italic;margin-bottom:1rem;" id="l1-collection">Collection « Réveille le géant africain en toi »</p>
+        <div class="or-line"></div>
+        <p style="color:var(--gris);line-height:1.9;margin-bottom:1rem;font-size:0.92rem;" id="l1-desc1">Ce livre n'est pas un livre de motivation générique. C'est un guide pratique, écrit depuis le terrain africain, pour t'aider à répondre aux questions fondamentales que personne autour de toi n'a su te poser.</p>
+        <p style="color:var(--gris);line-height:1.9;margin-bottom:2rem;font-size:0.92rem;" id="l1-desc2">Qui es-tu vraiment ? Quelle est ta mission ? Comment construire un avenir qui te ressemble malgré les pressions familiales, sociales et économiques du contexte africain ?</p>
+
+        <!-- Bénéfices -->
+        <div style="margin-bottom:2rem;">
+          <div class="benefit-item"><span class="benefit-check">✓</span><span style="color:var(--gris);font-size:0.9rem;" id="b1">Une méthode en 4 étapes pour te découvrir profondément</span></div>
+          <div class="benefit-item"><span class="benefit-check">✓</span><span style="color:var(--gris);font-size:0.9rem;" id="b2">Des exercices pratiques adaptés au contexte africain</span></div>
+          <div class="benefit-item"><span class="benefit-check">✓</span><span style="color:var(--gris);font-size:0.9rem;" id="b3">Des outils pour clarifier ta vision et tes objectifs de vie</span></div>
+          <div class="benefit-item"><span class="benefit-check">✓</span><span style="color:var(--gris);font-size:0.9rem;" id="b4">Un langage qui te ressemble — africain, direct, authentique</span></div>
+        </div>
+
+        <!-- Prix & Commande -->
+        <div style="background:var(--nuit-3);border:1px solid rgba(200,169,81,0.2);padding:2rem;border-radius:var(--radius);margin-bottom:2rem;">
+          <div style="font-size:0.78rem;color:var(--gris);margin-bottom:0.3rem;" id="price-label">Prix vente directe</div>
+          <div style="font-family:var(--font-display);font-size:2.8rem;color:var(--or);font-weight:300;">5 000 FCFA</div>
+          <div style="font-size:0.75rem;color:var(--gris);margin-top:4px;" id="price-note">Livraison disponible · Dédicace possible</div>
+          <div class="order-btns">
+            <a class="order-btn order-wa" href="https://wa.me/237699545260?text=Bonjour William, je souhaite commander le livre Découvre-toi et Trace ta Route." target="_blank">
+              <span>📱 &nbsp; <span id="btn-wa">Commander via WhatsApp</span></span><span>→</span>
+            </a>
+            <a class="order-btn order-amazon" href="https://www.amazon.com/dp/B0GX3B4TTM" target="_blank">
+              <span>📦 &nbsp; <span id="btn-amazon">Acheter sur Amazon</span></span><span>→</span>
+            </a>
+            <a class="order-btn order-youscribe" href="#" target="_blank">
+              <span>📱 &nbsp; <span id="btn-youscribe">Lire sur YouScribe (eBook)</span></span><span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LIVRE 2 — YOUR LIFE YOUR MAP -->
+<section style="padding:80px 0;background:var(--nuit);">
+  <div class="container">
+    <div class="livre-featured-layout">
+      <div class="livre-cover-wrap reveal">
+        <img class="livre-cover-img" src="couverture-your-life.png" alt="Your Life Your Map — William Dounla" />
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="livre-univers" id="l2-univers">The Person · English</div>
+        <span class="status-badge status-published">✓ Published · Amazon</span>
+        <h2 class="section-title" id="l2-title">Your Life,<br><em>Your Map</em></h2>
+        <p style="font-size:0.78rem;color:var(--or);font-style:italic;margin-bottom:1rem;" id="l2-collection">Collection "Wake Up the African Giant in You"</p>
+        <div class="or-line"></div>
+        <p style="color:var(--gris);line-height:1.9;margin-bottom:1rem;font-size:0.92rem;" id="l2-desc">A bold guide to self-discovery and purpose. The English edition of "Découvre-toi et Trace ta Route" — for the African diaspora and English-speaking youth across the continent and beyond.</p>
+        <div style="margin-top:2rem;">
+          <a class="order-btn order-amazon" style="display:inline-flex;max-width:300px;" href="https://www.amazon.com/dp/B0GX3B4TTM" target="_blank">
+            <span>📦 &nbsp; <span id="l2-btn">Buy on Amazon</span></span><span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TEMOIGNAGES -->
+<section class="testi-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+      <div class="tag" id="testi-tag">Témoignages</div>
+      <h2 class="section-title" id="testi-title">Ce qu'ils disent<br><em>du livre</em></h2>
+    </div>
+    <!-- Zenab -->
+    <div class="testi-big reveal" style="margin-bottom:1.5rem;">
+      <img src="temoignage-zenab.png" alt="Zenab Mforifum" />
+      <div class="testi-big-content">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote-text" id="t-zenab">"Ce livre n'est pas seulement à lire. Il est à vivre. À méditer. À pratiquer."</p>
+        <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Zenab Mforifum</div>
+        <div style="font-size:0.78rem;color:var(--gris);">Auteure de « Je partage ta peine »</div>
+      </div>
+    </div>
+    <!-- Christelle -->
+    <div class="testi-big reveal">
+      <img src="temoignage-christelle.png" alt="Dr Christelle MBAKOP" style="object-position:center;" />
+      <div class="testi-big-content">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote-text" id="t-christelle">"J'ai lu les 22 premières pages avec avidité. C'est une pépite... Je viens de me rendre compte que je ne savais pas vraiment qui j'étais. Il est temps que je me reconnecte à mon original."</p>
+        <div style="font-size:0.85rem;color:var(--or);font-weight:500;">Dr Christelle MBAKOP</div>
+        <div style="font-size:0.78rem;color:var(--gris);">Pédiatre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LIVRES EN CHANTIER -->
+<section class="autres-livres">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="upcoming-tag">Prochains ouvrages</div>
+      <h2 class="section-title" id="upcoming-title">L'œuvre continue.<br><em>Trois livres en préparation.</em></h2>
+      <p class="lead" style="margin:0 auto;" id="upcoming-sub">Chaque nouveau titre amplifie les précédents. Un seul fil : la vérité au service de l'humain.</p>
+    </div>
+    <div class="livres-grid">
+
+      <!-- Édition Femme -->
+      <div class="livre-card reveal reveal-delay-1">
+        <div style="background:var(--nuit-2);display:flex;align-items:center;justify-content:center;padding:3rem;aspect-ratio:4/3;">
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:1rem;">👩🏾</div>
+            <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--or);">Édition Femme</div>
+            <div style="font-size:0.8rem;color:var(--gris);margin-top:0.5rem;font-style:italic;">Cover en préparation</div>
+          </div>
+        </div>
+        <div class="livre-card-body">
+          <div class="livre-univers" id="l3-univers">La Personne · Femme</div>
+          <h3 class="livre-card-title" id="l3-title">Découvre-toi et Trace ta Route — Édition Femme</h3>
+          <p class="livre-card-sub" id="l3-sub">Un guide taillé pour la femme africaine — son identité, sa force, sa vocation et sa route propre.</p>
+          <div class="livre-card-footer">
+            <span class="status-badge status-soon">⟳ En finalisation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diriger en Afrique -->
+      <div class="livre-card reveal reveal-delay-2">
+        <img class="livre-card-img" src="couverture-diriger.png" alt="Diriger en Afrique — William Dounla" />
+        <div class="livre-card-body">
+          <div class="livre-univers" id="l4-univers">Le Leadership</div>
+          <h3 class="livre-card-title" id="l4-title">Diriger en Afrique</h3>
+          <p class="livre-card-sub" id="l4-sub">100 vérités que personne ne vous enseigne — Leadership, pouvoir, gouvernance et responsabilité en contexte africain.</p>
+          <div class="livre-card-footer">
+            <span class="status-badge status-wip">✎ En chantier</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gérer l'Église -->
+      <div class="livre-card reveal reveal-delay-1" style="grid-column:span 2;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;">
+          <img src="couverture-eglise.png" alt="Gérer l'Église avec Sagesse — William Dounla" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="livre-card-body">
+            <div class="livre-univers" id="l5-univers">L'Institution · La Foi</div>
+            <span class="status-badge status-wip">✎ En chantier</span>
+            <h3 class="livre-card-title" id="l5-title">Gérer l'Église avec Sagesse</h3>
+            <p style="font-size:0.78rem;color:var(--or);font-style:italic;margin-bottom:1rem;" id="l5-collection">Finance, gouvernance et intégrité au service de la mission</p>
+            <p class="livre-card-sub" id="l5-sub">Protéger l'œuvre de Dieu contre le désordre humain. Un livre écrit par un DAF et diacre qui vit ce qu'il écrit au quotidien.</p>
+            <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(200,169,81,0.06);border-left:2px solid var(--or);border-radius:0 4px 4px 0;">
+              <p style="font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--or-light,#E2CC8A);" id="l5-quote">"Gérer avec rigueur ne diminue pas la foi. Cela l'honore."</p>
+              <p style="font-size:0.75rem;color:var(--gris);margin-top:0.5rem;">— William Dounla</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LISTE D'ATTENTE -->
+<section class="waitlist-section">
+  <div class="container reveal">
+    <div class="tag" id="waitlist-tag">Sois le premier informé</div>
+    <h2 class="display-title" id="waitlist-title">Les prochains livres<br><em>arrivent bientôt.</em></h2>
+    <p class="lead" style="margin:1rem auto 0;text-align:center;" id="waitlist-sub">Rejoins la liste d'attente VIP — reçois les annonces en avant-première.</p>
+    <div class="waitlist-box">
+      <p style="color:var(--gris);font-size:0.9rem;margin-bottom:1.5rem;" id="waitlist-desc">Envoie un message WhatsApp avec le texte <strong style="color:var(--or);">"LISTE VIP"</strong> pour être notifié en priorité à chaque nouvelle sortie.</p>
+      <a class="btn btn-gold" href="https://wa.me/237699545260?text=LISTE VIP — Je veux être notifié des prochains livres de William Dounla" target="_blank" id="waitlist-btn">
+        📱 Rejoindre la liste VIP
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+        <p id="footer-tagline">Auteur · Compositeur · Stratège humain · Homme de conviction</p>
+        <p style="font-size:0.78rem;color:var(--or);margin-top:0.8rem;font-style:italic;" id="footer-mission">Servir Jésus-Christ sans compromis.</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-nav-title">Navigation</h4>
+        <a id="footer-link-accueil" href="index.html">Accueil</a>
+        <a id="footer-link-livre" href="livre.html">Livres</a>
+        <a href="harmonie.html">Harmonie</a>
+        <a id="footer-link-apropos" href="apropos.html">À propos</a>
+        <a id="footer-link-contact" href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-social-title">Réseaux</h4>
+        <a href="https://wa.me/237699545260" target="_blank">WhatsApp</a>
+        <a href="https://www.linkedin.com/in/william-dounla-b7b93088/" target="_blank">LinkedIn</a>
+        <a href="https://suno.com/@williamdounla" target="_blank">WD Harmony</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-rights">© 2026 William Dounla. Tous droits réservés.</p>
+      <p id="footer-made">Fait avec conviction depuis Yaoundé, Cameroun</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function updatePageLang(lang) {
+  const t = {
+    fr:{
+      breadcrumb:"Livres", collectionTag:"Collection — Réveille le géant africain en toi",
+      pageTitle:"L'œuvre de<br><em>William Dounla</em>",
+      pageSub:"Cinq livres. Un seul fil conducteur : aider les personnes et les organisations à devenir plus conscientes, plus responsables et plus alignées avec la vérité.",
+      l1Univers:"La Personne", l1Title:"Découvre-toi et<br><em>Trace ta Route</em>",
+      l1Collection:"Collection « Réveille le géant africain en toi »",
+      l1Desc1:"Ce livre n'est pas un livre de motivation générique. C'est un guide pratique, écrit depuis le terrain africain, pour t'aider à répondre aux questions fondamentales que personne autour de toi n'a su te poser.",
+      l1Desc2:"Qui es-tu vraiment ? Quelle est ta mission ? Comment construire un avenir qui te ressemble malgré les pressions familiales, sociales et économiques du contexte africain ?",
+      b1:"Une méthode en 4 étapes pour te découvrir profondément",
+      b2:"Des exercices pratiques adaptés au contexte africain",
+      b3:"Des outils pour clarifier ta vision et tes objectifs de vie",
+      b4:"Un langage qui te ressemble — africain, direct, authentique",
+      priceLabel:"Prix vente directe", priceNote:"Livraison disponible · Dédicace possible",
+      btnWa:"Commander via WhatsApp", btnAmazon:"Acheter sur Amazon", btnYouscribe:"Lire sur YouScribe (eBook)",
+      l2Univers:"La Personne · English", l2Title:"Your Life,<br><em>Your Map</em>",
+      l2Collection:"Collection \"Wake Up the African Giant in You\"",
+      l2Desc:"A bold guide to self-discovery and purpose. The English edition — for the African diaspora and English-speaking youth.",
+      l2Btn:"Buy on Amazon",
+      testiTag:"Témoignages", testiTitle:"Ce qu'ils disent<br><em>du livre</em>",
+      tZenab:'"Ce livre n\'est pas seulement à lire. Il est à vivre. À méditer. À pratiquer."',
+      tChristelle:'"J\'ai lu les 22 premières pages avec avidité. C\'est une pépite... Il est temps que je me reconnecte à mon original."',
+      upcomingTag:"Prochains ouvrages", upcomingTitle:"L'œuvre continue.<br><em>Trois livres en préparation.</em>",
+      upcomingSub:"Chaque nouveau titre amplifie les précédents. Un seul fil : la vérité au service de l'humain.",
+      l3Univers:"La Personne · Femme", l3Title:"Découvre-toi — Édition Femme",
+      l3Sub:"Un guide taillé pour la femme africaine — son identité, sa force, sa vocation et sa route propre.",
+      l4Univers:"Le Leadership", l4Title:"Diriger en Afrique",
+      l4Sub:"100 vérités que personne ne vous enseigne — Leadership, pouvoir, gouvernance en contexte africain.",
+      l5Univers:"L'Institution · La Foi", l5Title:"Gérer l'Église avec Sagesse",
+      l5Collection:"Finance, gouvernance et intégrité au service de la mission",
+      l5Sub:"Protéger l'œuvre de Dieu contre le désordre humain. Un livre écrit par un DAF et diacre qui vit ce qu'il écrit.",
+      l5Quote:'"Gérer avec rigueur ne diminue pas la foi. Cela l\'honore."',
+      waitlistTag:"Sois le premier informé", waitlistTitle:"Les prochains livres<br><em>arrivent bientôt.</em>",
+      waitlistSub:"Rejoins la liste d'attente VIP — reçois les annonces en avant-première.",
+      waitlistDesc:"Envoie un message WhatsApp avec le texte <strong style='color:var(--or)'>\"LISTE VIP\"</strong> pour être notifié en priorité.",
+      waitlistBtn:"📱 Rejoindre la liste VIP",
+    },
+    en:{
+      breadcrumb:"Books", collectionTag:"Collection — Wake Up the African Giant in You",
+      pageTitle:"The work of<br><em>William Dounla</em>",
+      pageSub:"Five books. One thread: helping people and organizations become more conscious, more responsible and more aligned with truth.",
+      l1Univers:"The Person", l1Title:"Discover Yourself and<br><em>Trace Your Path</em>",
+      l1Collection:"Collection \"Wake Up the African Giant in You\"",
+      l1Desc1:"This is not a generic motivation book. It's a practical guide, written from the African ground, to help you answer the fundamental questions no one around you has known how to ask.",
+      l1Desc2:"Who are you really? What is your mission? How do you build a future that reflects you despite the family, social and economic pressures of the African context?",
+      b1:"A 4-step method to discover yourself deeply",
+      b2:"Practical exercises adapted to the African context",
+      b3:"Tools to clarify your vision and life goals",
+      b4:"A language that resonates — African, direct, authentic",
+      priceLabel:"Direct sale price", priceNote:"Delivery available · Dedication possible",
+      btnWa:"Order via WhatsApp", btnAmazon:"Buy on Amazon", btnYouscribe:"Read on YouScribe (eBook)",
+      l2Univers:"The Person · English", l2Title:"Your Life,<br><em>Your Map</em>",
+      l2Collection:"Collection \"Wake Up the African Giant in You\"",
+      l2Desc:"A bold guide to self-discovery and purpose. For the African diaspora and English-speaking youth across the continent and beyond.",
+      l2Btn:"Buy on Amazon",
+      testiTag:"Testimonials", testiTitle:"What they say<br><em>about the book</em>",
+      tZenab:'"This book is not just to be read. It is to be lived. To be meditated. To be practiced."',
+      tChristelle:'"I read the first 22 pages with eagerness. It\'s a gem... It\'s time for me to reconnect with my original."',
+      upcomingTag:"Upcoming books", upcomingTitle:"The work continues.<br><em>Three books in preparation.</em>",
+      upcomingSub:"Each new title amplifies the previous ones. One thread: truth in service of the human.",
+      l3Univers:"The Person · Woman", l3Title:"Discover Yourself — Woman's Edition",
+      l3Sub:"A guide crafted for the African woman — her identity, strength, vocation and her own path.",
+      l4Univers:"Leadership", l4Title:"Leading in Africa",
+      l4Sub:"100 truths nobody teaches you — Leadership, power, governance in the African context.",
+      l5Univers:"Institution · Faith", l5Title:"Managing the Church with Wisdom",
+      l5Collection:"Finance, governance and integrity in service of the mission",
+      l5Sub:"Protecting God's work against human disorder. A book written by a CFO and deacon who lives what he writes.",
+      l5Quote:'"Managing with rigor does not diminish faith. It honors it."',
+      waitlistTag:"Be the first to know", waitlistTitle:"The next books<br><em>are coming soon.</em>",
+      waitlistSub:"Join the VIP waiting list — receive announcements first.",
+      waitlistDesc:"Send a WhatsApp message with the text <strong style='color:var(--or)'>\"VIP LIST\"</strong> to be notified first.",
+      waitlistBtn:"📱 Join the VIP list",
+    }
+  };
+  const d = t[lang];
+  const s = (id,v,h) => { const e=document.getElementById(id); if(e){if(h)e.innerHTML=v;else e.textContent=v;} };
+  s('breadcrumb',d.breadcrumb); s('collection-tag',d.collectionTag);
+  s('page-title',d.pageTitle,1); s('page-sub',d.pageSub);
+  s('l1-univers',d.l1Univers); s('l1-title',d.l1Title,1); s('l1-collection',d.l1Collection);
+  s('l1-desc1',d.l1Desc1); s('l1-desc2',d.l1Desc2);
+  s('b1',d.b1);s('b2',d.b2);s('b3',d.b3);s('b4',d.b4);
+  s('price-label',d.priceLabel); s('price-note',d.priceNote);
+  s('btn-wa',d.btnWa); s('btn-amazon',d.btnAmazon); s('btn-youscribe',d.btnYouscribe);
+  s('l2-univers',d.l2Univers); s('l2-title',d.l2Title,1); s('l2-collection',d.l2Collection);
+  s('l2-desc',d.l2Desc); s('l2-btn',d.l2Btn);
+  s('testi-tag',d.testiTag); s('testi-title',d.testiTitle,1);
+  s('t-zenab',d.tZenab); s('t-christelle',d.tChristelle);
+  s('upcoming-tag',d.upcomingTag); s('upcoming-title',d.upcomingTitle,1); s('upcoming-sub',d.upcomingSub);
+  s('l3-univers',d.l3Univers); s('l3-title',d.l3Title); s('l3-sub',d.l3Sub);
+  s('l4-univers',d.l4Univers); s('l4-title',d.l4Title); s('l4-sub',d.l4Sub);
+  s('l5-univers',d.l5Univers); s('l5-title',d.l5Title); s('l5-collection',d.l5Collection);
+  s('l5-sub',d.l5Sub); s('l5-quote',d.l5Quote);
+  s('waitlist-tag',d.waitlistTag); s('waitlist-title',d.waitlistTitle,1);
+  s('waitlist-sub',d.waitlistSub); s('waitlist-desc',d.waitlistDesc,1); s('waitlist-btn',d.waitlistBtn);
+}
+</script>
+</body>
+</html>
