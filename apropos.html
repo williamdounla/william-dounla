@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — William Dounla</title>
+  <meta name="description" content="Découvrez l'histoire de William Dounla, auteur africain de développement personnel, conférencier et guide de vie." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      min-height: 55vh; display: flex; align-items: flex-end;
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 100% 20%, rgba(200,169,81,0.07) 0%, transparent 60%);
+    }
+
+    /* ── PORTRAIT SECTION ── */
+    .portrait-section { padding: 80px 0; }
+    .portrait-layout {
+      display: grid; grid-template-columns: 5fr 7fr;
+      gap: 5rem; align-items: start;
+    }
+    .portrait-col { position: sticky; top: calc(var(--nav-h) + 2rem); }
+    .portrait-main {
+      width: 100%; border-radius: var(--radius);
+      border: 1px solid rgba(200,169,81,0.2);
+      box-shadow: 20px 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(200,169,81,0.08);
+      display: block; object-fit: cover; object-position: top;
+    }
+    .portrait-secondary {
+      width: 55%; margin-top: -60px; margin-left: auto;
+      border-radius: var(--radius);
+      border: 2px solid rgba(200,169,81,0.3);
+      box-shadow: 10px 10px 40px rgba(0,0,0,0.5);
+      display: block; object-fit: cover; object-position: top;
+      position: relative; z-index: 2;
+    }
+    .portrait-label {
+      margin-top: 1.5rem; text-align: center;
+    }
+    .portrait-label .tag { margin-bottom: 0.3rem; }
+    .portrait-label p { font-size: 0.82rem; color: var(--gris); }
+
+    /* ── STORY ── */
+    .story-text p { color: var(--gris); line-height: 1.95; margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .story-text p strong { color: var(--blanc); font-weight: 500; }
+
+    .values-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin: 2.5rem 0;
+    }
+    .value-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.1);
+      padding: 1.2rem; border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+    .value-item:hover { border-color: rgba(200,169,81,0.3); }
+    .value-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .value-title { font-size: 0.82rem; font-weight: 600; color: var(--or); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+    .value-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.6; }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background: var(--nuit-2); padding: 80px 0; }
+    .timeline { position: relative; max-width: 700px; margin: 3rem auto 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(180deg, var(--or), transparent);
+    }
+    .timeline-item { display: flex; gap: 2rem; margin-bottom: 2.5rem; position: relative; }
+    .timeline-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--nuit-3); border: 2px solid var(--or);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1rem;
+      box-shadow: 0 0 20px rgba(200,169,81,0.2);
+    }
+    .timeline-content { padding-top: 6px; }
+    .timeline-year { font-size: 0.72rem; color: var(--or); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .timeline-title { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.7; }
+
+    /* ── LOGO SECTION ── */
+    .logo-section { padding: 80px 0; text-align: center; }
+    .logo-display {
+      max-width: 700px; margin: 3rem auto;
+      border: 1px solid rgba(200,169,81,0.15);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .logo-display img { width: 100%; display: block; }
+
+    /* ── MISSION BOX ── */
+    .mission-box {
+      background: linear-gradient(135deg, var(--nuit-3), #1a1a2e);
+      border: 1px solid rgba(200,169,81,0.2);
+      border-left: 4px solid var(--or);
+      padding: 3rem; border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 3rem 0;
+    }
+    .mission-box .tag { margin-bottom: 1rem; }
+    .mission-box p {
+      font-family: var(--font-display); font-size: 1.5rem;
+      font-style: italic; color: var(--blanc); line-height: 1.6;
+    }
+    .mission-box .author { margin-top: 1rem; font-size: 0.85rem; color: var(--or); }
+
+    /* ── CTA ── */
+    .about-cta {
+      background: var(--nuit-2); padding: 80px 0; text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .portrait-layout { grid-template-columns: 1fr; }
+      .portrait-col { position: static; }
+      .portrait-secondary { width: 45%; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor">
+  <div class="cursor-dot" style="position:fixed"></div>
+  <div class="cursor-ring" style="position:fixed"></div>
+</div>
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a id="mob-accueil" href="index.html">Accueil</a>
+  <a id="mob-livre" href="livre.html">Le Livre</a>
+  <a id="mob-apropos" href="apropos.html">À propos</a>
+  <a id="mob-contact" href="contact.html">Contact</a>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+  <ul class="nav-links">
+    <li><a id="nav-accueil" href="index.html">Accueil</a></li>
+    <li><a id="nav-livre" href="livre.html">Le Livre</a></li>
+    <li><a id="nav-apropos" href="apropos.html" class="active">À propos</a></li>
+    <li><a id="nav-contact" href="contact.html">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="nav-lang">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a id="nav-cta" class="nav-cta" href="livre.html">Commander</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">William Dounla</a> <span id="page-label">À propos</span></div>
+    <div class="tag" id="about-tag">L'auteur</div>
+    <h1 class="display-title" id="about-hero-title">William Dounla —<br><em>Stratège de transformation</em></h1>
+    <p style="color:var(--gris);margin-top:1rem;max-width:520px;" id="about-hero-sub">Auteur · Conférencier · Guide de vie · Bâtisseur de trajectoires</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PORTRAIT + STORY -->
+<section class="portrait-section">
+  <div class="container">
+    <div class="portrait-layout">
+
+      <!-- Photos -->
+      <div class="portrait-col reveal">
+        <img class="portrait-main" src="images/william-hero.jpeg" alt="William Dounla — Portrait officiel" />
+        <img class="portrait-secondary" src="images/william-boubou.png" alt="William Dounla" />
+        <div class="portrait-label">
+          <div class="tag" id="portrait-tag">William Dounla</div>
+          <p id="portrait-sub">Auteur · Yaoundé, Cameroun</p>
+        </div>
+      </div>
+
+      <!-- Story -->
+      <div class="reveal reveal-delay-2">
+        <div class="tag" id="story-tag">Mon histoire</div>
+        <h2 class="section-title" id="story-title">L'homme derrière<br><em>le mouvement</em></h2>
+        <div class="or-line"></div>
+        <div class="story-text">
+          <p id="story-p1"><strong>William Dounla</strong> est un auteur camerounais qui a compris très tôt que le manque de connaissance de soi est l'un des plus grands obstacles à l'épanouissement des jeunes africains.</p>
+          <p id="story-p2">Pendant des années, il a observé autour de lui des jeunes brillants, doués, pleins d'énergie — mais perdus. Non pas par manque d'intelligence, mais par manque d'outils pour se connaître, se choisir et s'orienter.</p>
+          <p id="story-p3">C'est cette observation qui l'a poussé à écrire <strong>« Découvre-toi et Trace ta Route »</strong> — un guide pratique et authentique, ancré dans la réalité africaine, pour aider chacun à répondre aux questions essentielles de son existence.</p>
+          <p id="story-p4">Aujourd'hui, William est bien plus qu'un auteur. Il est un <strong>stratège de transformation</strong>, un conférencier qui intervient dans les universités et les entreprises, et un bâtisseur de trajectoires pour la jeunesse africaine.</p>
+        </div>
+
+        <div class="mission-box">
+          <div class="tag" id="mission-tag">Sa mission</div>
+          <p id="mission-text">"Je n'écris pas des livres. Je construis un mouvement pour que la jeunesse africaine se lève, se découvre et trace sa propre route — pas celle qu'on a tracée pour elle."</p>
+          <div class="author">— William Dounla</div>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-item">
+            <div class="value-icon">🔍</div>
+            <div><div class="value-title" id="v1t">Authenticité</div><div class="value-desc" id="v1d">Parler vrai, depuis le terrain africain, sans artifices importés.</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">💡</div>
+            <div><div class="value-title" id="v2t">Praticité</div><div class="value-desc" id="v2d">Des outils concrets, actionnables dès la première lecture.</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🌍</div>
+            <div><div class="value-title" id="v3t">Ancrage africain</div><div class="value-desc" id="v3d">Un regard sur le développement personnel qui prend en compte nos réalités.</div></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🚀</div>
+            <div><div class="value-title" id="v4t">Impact durable</div><div class="value-desc" id="v4d">Transformer des vies pour plusieurs décennies, pas juste inspirer pour quelques heures.</div></div>
+          </div>
+        </div>
+
+        <a class="btn btn-gold" href="contact.html" id="about-contact-btn">
+          Me contacter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="tag" id="timeline-tag">Parcours</div>
+      <h2 class="section-title" id="timeline-title">Les étapes<br><em>du mouvement</em></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🌱</div>
+        <div class="timeline-content">
+          <div class="timeline-year" id="tl1-year">Les premières années</div>
+          <h3 class="timeline-title" id="tl1-title">L'observation et la prise de conscience</h3>
+          <p class="timeline-desc" id="tl1-desc">William observe autour de lui des jeunes brillants mais perdus. Il commence à développer une vision : donner aux jeunes africains les outils de connaissance de soi qui manquent cruellement.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">✍️</div>
+        <div class="timeline-content">
+          <div class="timeline-year" id="tl2-year">L'écriture</div>
+          <h3 class="timeline-title" id="tl2-title">Naissance du premier livre</h3>
+          <p class="timeline-desc" id="tl2-desc">Après des mois de travail, William finalise « Découvre-toi et Trace ta Route » — un guide qui synthétise des années de réflexion, d'expériences et d'accompagnements personnels.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">📚</div>
+        <div class="timeline-content">
+          <div class="timeline-year" id="tl3-year">2025 — Publication</div>
+          <h3 class="timeline-title" id="tl3-title">Disponible sur Amazon & YouScribe</h3>
+          <p class="timeline-desc" id="tl3-desc">Le livre est publié sur Amazon (version papier et numérique) et sur YouScribe. Les premiers lecteurs témoignent d'une transformation réelle. Le mouvement commence.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🌍</div>
+        <div class="timeline-content">
+          <div class="timeline-year" id="tl4-year">2026 — Aujourd'hui</div>
+          <h3 class="timeline-title" id="tl4-title">Le mouvement s'amplifie</h3>
+          <p class="timeline-desc" id="tl4-desc">Conférences, coaching, communauté en ligne. Plusieurs nouveaux livres en préparation. La marque William Dounla se construit comme un écosystème de transformation pour la jeunesse africaine.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🔮</div>
+        <div class="timeline-content">
+          <div class="timeline-year" id="tl5-year">Bientôt</div>
+          <h3 class="timeline-title" id="tl5-title">Prochains livres en préparation</h3>
+          <p class="timeline-desc" id="tl5-desc">La série William Dounla continue. Plusieurs ouvrages sont en cours d'écriture, chacun explorant une facette du développement de soi dans le contexte africain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LOGO / BRAND -->
+<section class="logo-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag" id="brand-tag">Identité de marque</div>
+      <h2 class="section-title" id="brand-title">La marque<br><em>William Dounla</em></h2>
+      <p class="lead" style="margin:0 auto;text-align:center;" id="brand-sub">Or et Bleu Nuit — Excellence, vision, structure, impact.</p>
+    </div>
+    <div class="logo-display reveal reveal-delay-2">
+      <img src="images/logo-wd.png" alt="Logo William Dounla — Charte graphique" />
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="container reveal">
+    <div class="tag" id="cta-tag">Travailler ensemble</div>
+    <h2 class="display-title" id="cta-title">Tu veux que William<br><em>intervienne chez toi ?</em></h2>
+    <p class="lead" style="margin:1.5rem auto 2.5rem;text-align:center;" id="cta-sub">
+      Conférence, atelier, coaching d'équipe ou partenariat — écris-nous.
+    </p>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a class="btn btn-gold" href="contact.html" id="cta-btn1">
+        Prendre contact
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-outline" href="livre.html" id="cta-btn2">Découvrir le livre</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+        <p id="footer-tagline">Auteur africain · Développement personnel · Transformation</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-nav-title">Navigation</h4>
+        <a id="footer-link-accueil" href="index.html">Accueil</a>
+        <a id="footer-link-livre" href="livre.html">Le Livre</a>
+        <a id="footer-link-apropos" href="apropos.html">À propos</a>
+        <a id="footer-link-contact" href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-social-title">Réseaux</h4>
+        <a href="https://wa.me/237699545260" target="_blank">WhatsApp</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-rights">© 2026 William Dounla. Tous droits réservés.</p>
+      <p id="footer-made">Fait avec passion depuis Yaoundé, Cameroun</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+const aboutTranslations = {
+  fr: {
+    pageLabel:"À propos", aboutTag:"L'auteur",
+    heroTitle:"William Dounla —<br><em>Stratège de transformation</em>",
+    heroSub:"Auteur · Conférencier · Guide de vie · Bâtisseur de trajectoires",
+    portraitTag:"William Dounla", portraitSub:"Auteur · Yaoundé, Cameroun",
+    storyTag:"Mon histoire", storyTitle:"L'homme derrière<br><em>le mouvement</em>",
+    p1:"<strong>William Dounla</strong> est un auteur camerounais qui a compris très tôt que le manque de connaissance de soi est l'un des plus grands obstacles à l'épanouissement des jeunes africains.",
+    p2:"Pendant des années, il a observé autour de lui des jeunes brillants, doués, pleins d'énergie — mais perdus. Non pas par manque d'intelligence, mais par manque d'outils pour se connaître, se choisir et s'orienter.",
+    p3:"C'est cette observation qui l'a poussé à écrire <strong>« Découvre-toi et Trace ta Route »</strong> — un guide pratique et authentique, ancré dans la réalité africaine.",
+    p4:"Aujourd'hui, William est un <strong>stratège de transformation</strong>, un conférencier qui intervient dans les universités et les entreprises, et un bâtisseur de trajectoires pour la jeunesse africaine.",
+    missionTag:"Sa mission",
+    missionText:"\"Je n'écris pas des livres. Je construis un mouvement pour que la jeunesse africaine se lève, se découvre et trace sa propre route — pas celle qu'on a tracée pour elle.\"",
+    v1t:"Authenticité",v1d:"Parler vrai, depuis le terrain africain, sans artifices importés.",
+    v2t:"Praticité",v2d:"Des outils concrets, actionnables dès la première lecture.",
+    v3t:"Ancrage africain",v3d:"Un regard sur le développement personnel qui prend en compte nos réalités.",
+    v4t:"Impact durable",v4d:"Transformer des vies pour plusieurs décennies, pas juste inspirer pour quelques heures.",
+    contactBtn:"Me contacter",
+    timelineTag:"Parcours",timelineTitle:"Les étapes<br><em>du mouvement</em>",
+    tl1y:"Les premières années",tl1t:"L'observation et la prise de conscience",tl1d:"William observe autour de lui des jeunes brillants mais perdus. Il commence à développer une vision : donner aux jeunes africains les outils de connaissance de soi qui manquent.",
+    tl2y:"L'écriture",tl2t:"Naissance du premier livre",tl2d:"Après des mois de travail, William finalise « Découvre-toi et Trace ta Route » — un guide qui synthétise des années de réflexion et d'accompagnements personnels.",
+    tl3y:"2025 — Publication",tl3t:"Disponible sur Amazon & YouScribe",tl3d:"Le livre est publié. Les premiers lecteurs témoignent d'une transformation réelle. Le mouvement commence.",
+    tl4y:"2026 — Aujourd'hui",tl4t:"Le mouvement s'amplifie",tl4d:"Conférences, coaching, communauté en ligne. Plusieurs nouveaux livres en préparation.",
+    tl5y:"Bientôt",tl5t:"Prochains livres en préparation",tl5d:"La série William Dounla continue. Plusieurs ouvrages en cours d'écriture, chacun explorant une facette du développement de soi dans le contexte africain.",
+    brandTag:"Identité de marque",brandTitle:"La marque<br><em>William Dounla</em>",brandSub:"Or et Bleu Nuit — Excellence, vision, structure, impact.",
+    ctaTag:"Travailler ensemble",ctaTitle:"Tu veux que William<br><em>intervienne chez toi ?</em>",ctaSub:"Conférence, atelier, coaching d'équipe ou partenariat — écris-nous.",
+    ctaBtn1:"Prendre contact",ctaBtn2:"Découvrir le livre",
+  },
+  en: {
+    pageLabel:"About", aboutTag:"The author",
+    heroTitle:"William Dounla —<br><em>Transformation strategist</em>",
+    heroSub:"Author · Speaker · Life Guide · Path Builder",
+    portraitTag:"William Dounla", portraitSub:"Author · Yaoundé, Cameroon",
+    storyTag:"My story", storyTitle:"The man behind<br><em>the movement</em>",
+    p1:"<strong>William Dounla</strong> is a Cameroonian author who understood early that lack of self-knowledge is one of the greatest obstacles to the fulfillment of young Africans.",
+    p2:"For years, he observed brilliant, talented, energetic young people — but lost. Not for lack of intelligence, but for lack of tools to know themselves, choose themselves and find direction.",
+    p3:"This observation pushed him to write <strong>\"Discover Yourself and Trace Your Path\"</strong> — a practical, authentic guide rooted in African reality.",
+    p4:"Today, William is a <strong>transformation strategist</strong>, a speaker who intervenes in universities and companies, and a path builder for African youth.",
+    missionTag:"His mission",
+    missionText:"\"I don't write books. I build a movement so that African youth rises, discovers itself and traces its own path — not the one traced for them.\"",
+    v1t:"Authenticity",v1d:"Speaking truth, from the African ground, without imported artifices.",
+    v2t:"Practicality",v2d:"Concrete tools, actionable from the very first reading.",
+    v3t:"African grounding",v3d:"A view of personal development that takes our realities into account.",
+    v4t:"Lasting impact",v4d:"Transforming lives for decades, not just inspiring for a few hours.",
+    contactBtn:"Contact me",
+    timelineTag:"Journey",timelineTitle:"The steps<br><em>of the movement</em>",
+    tl1y:"Early years",tl1t:"Observation and awakening",tl1d:"William observes brilliant but lost young people around him. He begins to develop a vision: giving African youth the self-knowledge tools they so desperately lack.",
+    tl2y:"Writing",tl2t:"Birth of the first book",tl2d:"After months of work, William finalizes 'Discover Yourself and Trace Your Path' — a guide synthesizing years of reflection and personal accompaniment.",
+    tl3y:"2025 — Publication",tl3t:"Available on Amazon & YouScribe",tl3d:"The book is published. The first readers testify to real transformation. The movement begins.",
+    tl4y:"2026 — Today",tl4t:"The movement amplifies",tl4d:"Conferences, coaching, online community. Several new books in preparation.",
+    tl5y:"Coming soon",tl5t:"Next books in preparation",tl5d:"The William Dounla series continues. Several works in progress, each exploring a facet of self-development in the African context.",
+    brandTag:"Brand identity",brandTitle:"The<br><em>William Dounla brand</em>",brandSub:"Gold and Midnight Blue — Excellence, vision, structure, impact.",
+    ctaTag:"Work together",ctaTitle:"Want William to<br><em>speak at your event?</em>",ctaSub:"Conference, workshop, team coaching or partnership — write to us.",
+    ctaBtn1:"Get in touch",ctaBtn2:"Discover the book",
+  }
+};
+function updatePageLang(lang) {
+  const t = aboutTranslations[lang];
+  const set = (id, val, html=false) => { const el=document.getElementById(id); if(el){if(html)el.innerHTML=val;else el.textContent=val;} };
+  set('page-label',t.pageLabel); set('about-tag',t.aboutTag);
+  set('about-hero-title',t.heroTitle,true); set('about-hero-sub',t.heroSub);
+  set('portrait-tag',t.portraitTag); set('portrait-sub',t.portraitSub);
+  set('story-tag',t.storyTag); set('story-title',t.storyTitle,true);
+  set('story-p1',t.p1,true); set('story-p2',t.p2,true); set('story-p3',t.p3,true); set('story-p4',t.p4,true);
+  set('mission-tag',t.missionTag); set('mission-text',t.missionText);
+  set('v1t',t.v1t);set('v1d',t.v1d);set('v2t',t.v2t);set('v2d',t.v2d);
+  set('v3t',t.v3t);set('v3d',t.v3d);set('v4t',t.v4t);set('v4d',t.v4d);
+  set('about-contact-btn',t.contactBtn);
+  set('timeline-tag',t.timelineTag); set('timeline-title',t.timelineTitle,true);
+  set('tl1-year',t.tl1y);set('tl1-title',t.tl1t);set('tl1-desc',t.tl1d);
+  set('tl2-year',t.tl2y);set('tl2-title',t.tl2t);set('tl2-desc',t.tl2d);
+  set('tl3-year',t.tl3y);set('tl3-title',t.tl3t);set('tl3-desc',t.tl3d);
+  set('tl4-year',t.tl4y);set('tl4-title',t.tl4t);set('tl4-desc',t.tl4d);
+  set('tl5-year',t.tl5y);set('tl5-title',t.tl5t);set('tl5-desc',t.tl5d);
+  set('brand-tag',t.brandTag);set('brand-title',t.brandTitle,true);set('brand-sub',t.brandSub);
+  set('cta-tag',t.ctaTag);set('cta-title',t.ctaTitle,true);set('cta-sub',t.ctaSub);
+  set('cta-btn1',t.ctaBtn1);set('cta-btn2',t.ctaBtn2);
+}
+</script>
+</body>
+</html>

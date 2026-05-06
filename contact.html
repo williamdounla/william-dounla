@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — William Dounla</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero {
+      min-height: 50vh; display: flex; align-items: flex-end;
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 80% 30%, rgba(200,169,81,0.08) 0%, transparent 60%);
+    }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-section { padding: 80px 0; }
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 5rem; align-items: start;
+    }
+
+    /* ── CONTACT CARDS ── */
+    .contact-card {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.12);
+      padding: 1.8rem; border-radius: var(--radius);
+      transition: all var(--transition); text-decoration: none;
+      margin-bottom: 1rem;
+    }
+    .contact-card:hover { border-color: rgba(200,169,81,0.35); transform: translateX(6px); }
+    .contact-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .contact-icon-wa  { background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.3); }
+    .contact-icon-ig  { background: rgba(200,169,81,0.1); border: 1px solid rgba(200,169,81,0.3); }
+    .contact-icon-tt  { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+    .contact-icon-yt  { background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2); }
+    .contact-icon-li  { background: rgba(10,102,194,0.1); border: 1px solid rgba(10,102,194,0.3); }
+    .contact-label { font-size: 0.72rem; color: var(--or); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .contact-value { font-size: 0.95rem; color: var(--blanc); font-weight: 500; }
+    .contact-desc { font-size: 0.8rem; color: var(--gris); margin-top: 0.2rem; }
+
+    /* ── FORM ── */
+    .contact-form-wrap {
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.12);
+      padding: 3rem; border-radius: var(--radius);
+    }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label {
+      display: block; font-size: 0.75rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--or); margin-bottom: 0.6rem;
+    }
+    .form-input {
+      width: 100%; padding: 14px 18px;
+      background: var(--nuit); border: 1px solid rgba(245,245,240,0.12);
+      border-radius: var(--radius); color: var(--blanc);
+      font-family: var(--font-body); font-size: 0.9rem;
+      transition: border-color 0.3s; outline: none;
+    }
+    .form-input:focus { border-color: var(--or); }
+    .form-input::placeholder { color: var(--gris); }
+    textarea.form-input { resize: vertical; min-height: 140px; }
+    select.form-input { cursor: pointer; }
+    select.form-input option { background: var(--nuit-3); }
+    .form-submit {
+      width: 100%;
+      background: var(--or); color: var(--nuit);
+      border: none; padding: 16px 32px;
+      font-family: var(--font-body); font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--radius); cursor: none;
+      transition: all 0.3s;
+    }
+    .form-submit:hover { background: var(--or-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,169,81,0.3); }
+    .form-success {
+      display: none; background: rgba(45,106,79,0.2); border: 1px solid rgba(45,106,79,0.4);
+      color: #95d5b2; padding: 1rem 1.5rem; border-radius: var(--radius);
+      font-size: 0.9rem; margin-top: 1rem; text-align: center;
+    }
+
+    /* ── PHOTO SIDE ── */
+    .contact-photo {
+      width: 100%; border-radius: var(--radius);
+      border: 1px solid rgba(200,169,81,0.15);
+      margin-bottom: 2rem; display: block;
+      object-fit: cover; object-position: top;
+      max-height: 340px;
+    }
+
+    /* ── BOOK CTA ── */
+    .book-mini {
+      display: flex; gap: 1.5rem; align-items: center;
+      background: var(--nuit-3); border: 1px solid rgba(200,169,81,0.15);
+      padding: 1.5rem; border-radius: var(--radius);
+      text-decoration: none; margin-top: 2rem;
+      transition: all 0.3s;
+    }
+    .book-mini:hover { border-color: rgba(200,169,81,0.35); transform: translateX(4px); }
+    .book-mini img { width: 70px; border-radius: 2px; }
+    .book-mini-text .book-mini-tag { font-size: 0.7rem; color: var(--or); letter-spacing: 0.1em; text-transform: uppercase; }
+    .book-mini-text h4 { font-family: var(--font-display); font-size: 1rem; color: var(--blanc); margin: 0.3rem 0; }
+    .book-mini-text p { font-size: 0.78rem; color: var(--gris); }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor">
+  <div class="cursor-dot" style="position:fixed"></div>
+  <div class="cursor-ring" style="position:fixed"></div>
+</div>
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a id="mob-accueil" href="index.html">Accueil</a>
+  <a id="mob-livre" href="livre.html">Le Livre</a>
+  <a id="mob-apropos" href="apropos.html">À propos</a>
+  <a id="mob-contact" href="contact.html">Contact</a>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+  <ul class="nav-links">
+    <li><a id="nav-accueil" href="index.html">Accueil</a></li>
+    <li><a id="nav-livre" href="livre.html">Le Livre</a></li>
+    <li><a id="nav-apropos" href="apropos.html">À propos</a></li>
+    <li><a id="nav-contact" href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="nav-lang">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a id="nav-cta" class="nav-cta" href="livre.html">Commander</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">William Dounla</a> <span id="page-label">Contact</span></div>
+    <div class="tag" id="contact-tag">Parlons ensemble</div>
+    <h1 class="display-title" id="contact-hero-title">Prenons<br><em>contact</em></h1>
+    <p style="color:var(--gris);margin-top:1rem;max-width:480px;" id="contact-hero-sub">Pour commander un livre, organiser une conférence, un atelier ou un partenariat.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Left: Info + Photo -->
+      <div class="reveal">
+        <img class="contact-photo" src="images/william-hero.jpeg" alt="William Dounla" />
+
+        <div class="tag" id="contact-info-tag">Coordonnées directes</div>
+        <h2 class="section-title" style="margin-bottom:2rem;" id="contact-info-title">Restons<br><em>connectés</em></h2>
+
+        <a class="contact-card" href="https://wa.me/237699545260?text=Bonjour William" target="_blank">
+          <div class="contact-icon contact-icon-wa">📱</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+237 699 54 52 60</div>
+            <div class="contact-desc" id="wa-desc">Commandes, questions, coaching direct</div>
+          </div>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank">
+          <div class="contact-icon contact-icon-ig">📸</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@williamdounla</div>
+            <div class="contact-desc" id="ig-desc">Contenu quotidien, stories, reels</div>
+          </div>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank">
+          <div class="contact-icon contact-icon-tt">🎵</div>
+          <div>
+            <div class="contact-label">TikTok</div>
+            <div class="contact-value">@williamdounla</div>
+            <div class="contact-desc" id="tt-desc">Vidéos courtes, développement personnel</div>
+          </div>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank">
+          <div class="contact-icon contact-icon-yt">▶️</div>
+          <div>
+            <div class="contact-label">YouTube</div>
+            <div class="contact-value">William Dounla</div>
+            <div class="contact-desc" id="yt-desc">Vidéos longues, conférences, lives</div>
+          </div>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank">
+          <div class="contact-icon contact-icon-li">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">William Dounla</div>
+            <div class="contact-desc" id="li-desc">Partenariats professionnels, conférences entreprises</div>
+          </div>
+        </a>
+
+        <!-- Book mini CTA -->
+        <a class="book-mini" href="livre.html">
+          <img src="images/couverture.png" alt="Couverture livre" />
+          <div class="book-mini-text">
+            <div class="book-mini-tag" id="book-mini-tag">Commander maintenant</div>
+            <h4 id="book-mini-title">Découvre-toi et Trace ta Route</h4>
+            <p id="book-mini-sub">5 000 FCFA · Amazon · YouScribe</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-2">
+        <div class="contact-form-wrap">
+          <div class="tag" id="form-tag">Formulaire de contact</div>
+          <h3 style="font-family:var(--font-display);font-size:1.8rem;margin-bottom:0.5rem;" id="form-title">Écris-moi directement</h3>
+          <p style="color:var(--gris);font-size:0.85rem;margin-bottom:2rem;" id="form-sub">Je réponds dans les 24h.</p>
+
+          <form id="contactForm">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" id="label-nom">Prénom</label>
+                <input class="form-input" type="text" id="input-nom" placeholder="Ton prénom" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" id="label-pays">Pays</label>
+                <input class="form-input" type="text" id="input-pays" placeholder="Cameroun, France..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="label-email">Email</label>
+              <input class="form-input" type="email" id="input-email" placeholder="ton@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="label-sujet">Sujet</label>
+              <select class="form-input" id="input-sujet">
+                <option value="" id="opt-default">Choisir un sujet...</option>
+                <option value="livre" id="opt-livre">Commander le livre</option>
+                <option value="conference" id="opt-conf">Organiser une conférence</option>
+                <option value="coaching" id="opt-coach">Coaching individuel</option>
+                <option value="atelier" id="opt-atelier">Atelier de groupe</option>
+                <option value="partenariat" id="opt-partner">Partenariat / Médias</option>
+                <option value="autre" id="opt-autre">Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="label-message">Message</label>
+              <textarea class="form-input" id="input-message" placeholder="Ton message..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="form-submit">Envoyer le message →</button>
+            <div class="form-success" id="form-success">
+              ✓ <span id="success-msg">Message envoyé ! Je te réponds dans les 24h.</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- WhatsApp direct CTA box -->
+        <div style="margin-top:1.5rem;background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.2);padding:1.5rem 2rem;border-radius:var(--radius);display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.8rem;">📱</span>
+          <div>
+            <div style="font-size:0.78rem;color:#25D366;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;" id="wa-cta-label">Réponse immédiate</div>
+            <div style="font-size:0.9rem;color:var(--blanc);" id="wa-cta-text">Pour une commande rapide ou une question urgente, écris directement sur WhatsApp.</div>
+            <a href="https://wa.me/237699545260" target="_blank" style="display:inline-block;margin-top:0.8rem;font-size:0.82rem;font-weight:600;color:#25D366;letter-spacing:0.08em;text-decoration:none;" id="wa-cta-btn">Écrire sur WhatsApp → +237 699 54 52 60</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">W<span>illiam </span>D<span>ounla</span></a>
+        <p id="footer-tagline">Auteur africain · Développement personnel · Transformation</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-nav-title">Navigation</h4>
+        <a id="footer-link-accueil" href="index.html">Accueil</a>
+        <a id="footer-link-livre" href="livre.html">Le Livre</a>
+        <a id="footer-link-apropos" href="apropos.html">À propos</a>
+        <a id="footer-link-contact" href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-social-title">Réseaux</h4>
+        <a href="https://wa.me/237699545260" target="_blank">WhatsApp</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-rights">© 2026 William Dounla. Tous droits réservés.</p>
+      <p id="footer-made">Fait avec passion depuis Yaoundé, Cameroun</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Form submit
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nom = document.getElementById('input-nom').value;
+  const email = document.getElementById('input-email').value;
+  const sujet = document.getElementById('input-sujet').value;
+  const msg = document.getElementById('input-message').value;
+  // Redirect to WhatsApp with message
+  const waMsg = encodeURIComponent(`Bonjour William,\n\nJe m'appelle ${nom} (${email}).\n\nSujet: ${sujet}\n\n${msg}`);
+  window.open(`https://wa.me/237699545260?text=${waMsg}`, '_blank');
+  document.getElementById('form-success').style.display = 'block';
+  this.reset();
+});
+
+const contactTranslations = {
+  fr: {
+    pageLabel:"Contact", contactTag:"Parlons ensemble",
+    heroTitle:"Prenons<br><em>contact</em>",
+    heroSub:"Pour commander un livre, organiser une conférence, un atelier ou un partenariat.",
+    infoTag:"Coordonnées directes", infoTitle:"Restons<br><em>connectés</em>",
+    waDesc:"Commandes, questions, coaching direct",
+    igDesc:"Contenu quotidien, stories, reels",
+    ttDesc:"Vidéos courtes, développement personnel",
+    ytDesc:"Vidéos longues, conférences, lives",
+    liDesc:"Partenariats professionnels, conférences entreprises",
+    bookMiniTag:"Commander maintenant",bookMiniTitle:"Découvre-toi et Trace ta Route",bookMiniSub:"5 000 FCFA · Amazon · YouScribe",
+    formTag:"Formulaire de contact",formTitle:"Écris-moi directement",formSub:"Je réponds dans les 24h.",
+    labelNom:"Prénom",labelPays:"Pays",labelEmail:"Email",labelSujet:"Sujet",labelMsg:"Message",
+    optDefault:"Choisir un sujet...",optLivre:"Commander le livre",optConf:"Organiser une conférence",
+    optCoach:"Coaching individuel",optAtelier:"Atelier de groupe",optPartner:"Partenariat / Médias",optAutre:"Autre",
+    formSubmit:"Envoyer le message →",successMsg:"Message envoyé ! Je te réponds dans les 24h.",
+    waCta:"Réponse immédiate",waCtaText:"Pour une commande rapide ou une question urgente, écris directement sur WhatsApp.",waCtaBtn:"Écrire sur WhatsApp → +237 699 54 52 60",
+  },
+  en: {
+    pageLabel:"Contact", contactTag:"Let's talk",
+    heroTitle:"Get in<br><em>touch</em>",
+    heroSub:"To order a book, organize a conference, a workshop or a partnership.",
+    infoTag:"Direct contact", infoTitle:"Stay<br><em>connected</em>",
+    waDesc:"Orders, questions, direct coaching",
+    igDesc:"Daily content, stories, reels",
+    ttDesc:"Short videos, personal development",
+    ytDesc:"Long videos, conferences, live sessions",
+    liDesc:"Professional partnerships, corporate conferences",
+    bookMiniTag:"Order now",bookMiniTitle:"Discover Yourself and Trace Your Path",bookMiniSub:"5,000 FCFA · Amazon · YouScribe",
+    formTag:"Contact form",formTitle:"Write to me directly",formSub:"I respond within 24h.",
+    labelNom:"First name",labelPays:"Country",labelEmail:"Email",labelSujet:"Subject",labelMsg:"Message",
+    optDefault:"Choose a subject...",optLivre:"Order the book",optConf:"Organize a conference",
+    optCoach:"Individual coaching",optAtelier:"Group workshop",optPartner:"Partnership / Media",optAutre:"Other",
+    formSubmit:"Send message →",successMsg:"Message sent! I'll reply within 24h.",
+    waCta:"Immediate response",waCtaText:"For a quick order or urgent question, write directly on WhatsApp.",waCtaBtn:"Write on WhatsApp → +237 699 54 52 60",
+  }
+};
+function updatePageLang(lang) {
+  const t = contactTranslations[lang];
+  const set = (id, val, html=false) => { const el=document.getElementById(id); if(el){if(html)el.innerHTML=val;else el.textContent=val;} };
+  set('page-label',t.pageLabel); set('contact-tag',t.contactTag);
+  set('contact-hero-title',t.heroTitle,true); set('contact-hero-sub',t.heroSub);
+  set('contact-info-tag',t.infoTag); set('contact-info-title',t.infoTitle,true);
+  set('wa-desc',t.waDesc);set('ig-desc',t.igDesc);set('tt-desc',t.ttDesc);set('yt-desc',t.ytDesc);set('li-desc',t.liDesc);
+  set('book-mini-tag',t.bookMiniTag);set('book-mini-title',t.bookMiniTitle);set('book-mini-sub',t.bookMiniSub);
+  set('form-tag',t.formTag);set('form-title',t.formTitle);set('form-sub',t.formSub);
+  set('label-nom',t.labelNom);set('label-pays',t.labelPays);set('label-email',t.labelEmail);set('label-sujet',t.labelSujet);set('label-message',t.labelMsg);
+  set('opt-default',t.optDefault);set('opt-livre',t.optLivre);set('opt-conf',t.optConf);set('opt-coach',t.optCoach);set('opt-atelier',t.optAtelier);set('opt-partner',t.optPartner);set('opt-autre',t.optAutre);
+  set('form-submit',t.formSubmit);set('success-msg',t.successMsg);
+  set('wa-cta-label',t.waCta);set('wa-cta-text',t.waCtaText);set('wa-cta-btn',t.waCtaBtn);
+}
+</script>
+</body>
+</html>
