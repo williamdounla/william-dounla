@@ -6,28 +6,30 @@
 const i18n = {
   fr: {
     nav: {
-      accueil: "Accueil", livre: "Le Livre", apropos: "À propos", contact: "Contact",
+      accueil: "Accueil", livre: "Livres", harmonie: "Harmonie",
+      apropos: "À propos", contact: "Contact",
       commander: "Commander"
     },
     footer: {
-      tagline: "Auteur africain · Développement personnel · Transformation",
+      tagline: "Auteur · Compositeur · Stratège humain · Homme de conviction",
       nav: "Navigation", social: "Réseaux",
-      links: { accueil: "Accueil", livre: "Le Livre", apropos: "À propos", contact: "Contact" },
+      links: { accueil: "Accueil", livre: "Livres", apropos: "À propos", contact: "Contact" },
       rights: "© 2026 William Dounla. Tous droits réservés.",
-      made: "Fait avec passion depuis Yaoundé, Cameroun"
+      made: "Fait avec conviction depuis Yaoundé, Cameroun"
     }
   },
   en: {
     nav: {
-      accueil: "Home", livre: "The Book", apropos: "About", contact: "Contact",
+      accueil: "Home", livre: "Books", harmonie: "Harmony",
+      apropos: "About", contact: "Contact",
       commander: "Order Now"
     },
     footer: {
-      tagline: "African author · Personal development · Transformation",
+      tagline: "Author · Composer · Human Strategist · Man of Conviction",
       nav: "Navigation", social: "Social",
-      links: { accueil: "Home", livre: "The Book", apropos: "About", contact: "Contact" },
+      links: { accueil: "Home", livre: "Books", apropos: "About", contact: "Contact" },
       rights: "© 2026 William Dounla. All rights reserved.",
-      made: "Made with passion from Yaoundé, Cameroon"
+      made: "Made with conviction from Yaoundé, Cameroon"
     }
   }
 };
@@ -83,11 +85,13 @@ function updateNav() {
   const links = {
     'nav-accueil': t.nav.accueil,
     'nav-livre': t.nav.livre,
+    'nav-harmonie': t.nav.harmonie,
     'nav-apropos': t.nav.apropos,
     'nav-contact': t.nav.contact,
     'nav-cta': t.nav.commander,
     'mob-accueil': t.nav.accueil,
     'mob-livre': t.nav.livre,
+    'mob-harmonie': t.nav.harmonie,
     'mob-apropos': t.nav.apropos,
     'mob-contact': t.nav.contact,
   };
